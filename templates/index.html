@@ -1,202 +1,506 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="dark" lang="en">
 <head>
     <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>VaultGuard | Hybrid Passphrase Suite v.2</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>KEY_GEN_SYSTEM | Cyber-Professional</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-    <script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
         tailwind.config = {
+            darkMode: "class",
             theme: {
                 extend: {
                     colors: {
-                        sky: { 400: '#38bdf8', 500: '#0ea5e9', }
+                        "surface": "#0b1326",
+                        "surface-dim": "#0b1326",
+                        "surface-bright": "#31394d",
+                        "surface-container-lowest": "#060e20",
+                        "surface-container-low": "#131b2e",
+                        "surface-container": "#171f33",
+                        "surface-container-high": "#222a3d",
+                        "surface-container-highest": "#2d3449",
+                        "on-surface": "#dae2fd",
+                        "on-surface-variant": "#bbcabf",
+                        "inverse-surface": "#dae2fd",
+                        "inverse-on-surface": "#283044",
+                        "outline": "#86948a",
+                        "outline-variant": "#3c4a42",
+                        "surface-tint": "#4edea3",
+                        "primary": "#4edea3",
+                        "on-primary": "#003824",
+                        "primary-container": "#10b981",
+                        "on-primary-container": "#00422b",
+                        "inverse-primary": "#006c49",
+                        "secondary": "#b7c8e1",
+                        "on-secondary": "#213145",
+                        "secondary-container": "#3a4a5f",
+                        "on-secondary-container": "#a9bad3",
+                        "tertiary": "#ffb3af",
+                        "on-tertiary": "#650911",
+                        "tertiary-container": "#fc7c78",
+                        "on-tertiary-container": "#711419",
+                        "error": "#ffb4ab",
+                        "on-error": "#690005",
+                        "error-container": "#93000a",
+                        "on-error-container": "#ffdad6",
+                        "primary-fixed": "#6ffbbe",
+                        "primary-fixed-dim": "#4edea3",
+                        "on-primary-fixed": "#002113",
+                        "on-primary-fixed-variant": "#005236",
+                        "secondary-fixed": "#d3e4fe",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "on-secondary-fixed": "#0b1c30",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "tertiary-fixed": "#ffdad7",
+                        "tertiary-fixed-dim": "#ffb3af",
+                        "on-tertiary-fixed": "#410005",
+                        "on-tertiary-fixed-variant": "#842225",
+                        "background": "#0b1326",
+                        "on-background": "#dae2fd",
+                        "surface-variant": "#2d3449",
+                        "security-ultra": "#10B981",
+                        "security-secure": "#F59E0B",
+                        "security-weak": "#EF4444",
+                        "surface-charcoal": "#1E293B",
+                        "border-slate": "#334155"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    spacing: {
+                        "glass-padding": "1.5rem",
+                        "element-padding": "1rem",
+                        "stack-gap": "1rem",
+                        "container-margin": "1.25rem"
                     },
                     fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'monospace'],
+                        "headline-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "passphrase-display": ["JetBrains Mono"],
+                        "label-caps": ["JetBrains Mono"],
+                        "metric-sm": ["JetBrains Mono"]
+                    },
+                    fontSize: {
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "passphrase-display": ["22px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                        "metric-sm": ["14px", {"lineHeight": "1.2", "fontWeight": "400"}]
                     }
                 }
             }
         }
     </script>
     <style>
-        body { color: #ffffff; font-family: 'Inter', sans-serif; overflow-x: hidden; }
-        @keyframes gradient-bg { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
-        .mesh-bg { background: linear-gradient(-45deg, #000000, #0a0a0a, #262626, #141414); background-size: 400% 400%; animation: gradient-bg 15s ease infinite; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; }
-        .glass-panel { background: rgba(255, 255, 255, 0.04); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3); border-radius: 1rem; transition: all 0.3s ease; }
-        .glass-nav { background: rgba(0, 0, 0, 0.4); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
-        .glass-button { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.2s ease; }
-        .glass-button:hover { background: rgba(255, 255, 255, 0.1); border-color: rgba(56, 189, 248, 0.5); }
-        .primary-button { background: linear-gradient(135deg, #0ea5e9, #38bdf8); box-shadow: 0 4px 15px rgba(14, 165, 233, 0.4); border: none; color: white; transition: all 0.2s ease; }
-        .primary-button:hover { box-shadow: 0 6px 20px rgba(56, 189, 248, 0.6); transform: translateY(-2px); }
-        .sky-glow { text-shadow: 0 0 24px rgba(56, 189, 248, 0.5); }
-        .text-gradient { background: linear-gradient(to right, #ffffff, #38bdf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        input[type=range] { -webkit-appearance: none; background: rgba(255, 255, 255, 0.1); height: 6px; border-radius: 99px; width: 100%; }
-        input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; height: 20px; width: 20px; border-radius: 50%; background: #ffffff; border: 2px solid #38bdf8; cursor: pointer; transition: transform 0.1s; }
-        .toggle-checkbox:checked { right: 0; border-color: #38bdf8; }
-        .toggle-checkbox:checked + .toggle-label { background-color: #0ea5e9; }
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.2); border-radius: 10px; }
+        body { background-color: #0b1326; color: #dae2fd; -webkit-font-smoothing: antialiased; min-height: max(884px, 100dvh); overflow-x: hidden; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; user-select: none; }
+        .glass-card, .glass-panel { background: rgba(30, 41, 59, 0.4); backdrop-filter: blur(24px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .security-segment { height: 6px; flex: 1; background: #334155; border-radius: 1px; transition: background-color 0.3s ease; margin-right: 2px; }
+        .security-segment.active-red { background: #EF4444; }
+        .security-segment.active-amber { background: #F59E0B; }
+        .security-segment.active-green { background: #10B981; }
+        
+        /* Settings Custom Inputs */
+        input[type="range"] { -webkit-appearance: none; width: 100%; height: 4px; background: #334155; border-radius: 2px; outline: none; }
+        input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; width: 16px; height: 16px; background: #4edea3; border-radius: 2px; cursor: pointer; box-shadow: 0 0 10px rgba(78, 222, 163, 0.4); }
+        .custom-toggle:checked ~ .toggle-dot { transform: translateX(100%); background-color: #4edea3; }
+        .custom-toggle:checked ~ .toggle-bg { background-color: #10b98120; border-color: #4edea3; }
+        
+        /* Accordion */
+        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
+        .accordion-item.active .accordion-content { max-height: 200px; }
+        .accordion-item.active .chevron { transform: rotate(180deg); }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #0b1326; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 2px; }
     </style>
 </head>
-<body class="min-h-screen flex flex-col antialiased">
-    <div class="mesh-bg"></div>
-
-    <header class="glass-nav sticky top-0 z-50 px-6 py-4 flex justify-between items-center w-full">
-        <div class="flex items-center gap-3">
-            <span class="material-symbols-outlined text-sky-400 text-3xl icon-fill">security</span>
-            <h1 class="text-2xl font-bold tracking-tight text-white">Vault<span class="text-sky-400">Guard</span></h1>
-        </div>
-        <div class="hidden md:flex items-center gap-6">
-            <span id="nav-gen" class="text-white font-medium border-b-2 border-sky-400 pb-1 cursor-pointer" onclick="switchTab('generator')">Generator</span>
-            <span id="nav-bench" class="text-white/60 hover:text-white transition-colors cursor-pointer" onclick="switchTab('benchmark')">Benchmark & Analytics</span>
-            <span class="text-white/60 hover:text-white transition-colors cursor-pointer">History</span>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col font-body-md overflow-x-hidden selection:bg-primary/30 pb-32">
+    
+    <!-- TopAppBar -->
+    <header class="bg-surface-dim border-b border-border-slate docked full-width top-0 sticky z-50">
+        <div class="flex justify-between items-center w-full px-glass-padding py-4 max-w-[480px] mx-auto">
+            <div class="flex items-center gap-3">
+                <span class="material-symbols-outlined text-primary">security</span>
+                <span class="font-label-caps text-label-caps tracking-widest text-primary">KEY_GEN_SYSTEM</span>
+            </div>
+            <button class="active:scale-95 transition-transform duration-100">
+                <span class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">info</span>
+            </button>
         </div>
     </header>
 
-    <main id="tab-generator" class="flex-1 w-full max-w-6xl mx-auto p-6 flex flex-col gap-8 pb-24">
-        <section class="text-center space-y-4 mb-4">
-            <h2 class="text-4xl md:text-5xl font-bold text-gradient mb-2">Hybrid Passphrase Suite v.2</h2>
-            <p class="text-white/70 font-medium max-w-2xl mx-auto">Research-grade cryptographic token generation.</p>
+    <!-- Tab 1: Generator -->
+    <main id="tab-generator" class="flex-grow flex flex-col items-center px-4 pt-8 max-w-[480px] mx-auto w-full space-y-8">
+        <section class="w-full flex flex-col items-center gap-4">
+            <div class="glass-card w-full rounded-xl p-8 flex flex-col items-center justify-center relative group min-h-[160px]">
+                <div class="absolute top-3 right-3 flex gap-2">
+                    <button class="p-2 text-on-surface-variant hover:text-primary transition-all active:scale-90" onclick="copyToClipboard()" title="Copy">
+                        <span class="material-symbols-outlined" id="copy-icon">content_copy</span>
+                    </button>
+                    <button class="p-2 text-on-surface-variant hover:text-primary transition-all active:rotate-180 duration-500" onclick="generatePassphrase()" title="Refresh">
+                        <span class="material-symbols-outlined">refresh</span>
+                    </button>
+                </div>
+                <h1 class="font-passphrase-display text-passphrase-display text-center break-all text-primary" id="passphrase-output">Generating...</h1>
+                <div class="mt-6 flex flex-col items-center w-full gap-2">
+                    <div class="flex w-full gap-1" id="strength-meter">
+                        <div class="security-segment"></div><div class="security-segment"></div><div class="security-segment"></div><div class="security-segment"></div>
+                        <div class="security-segment"></div><div class="security-segment"></div><div class="security-segment"></div><div class="security-segment"></div>
+                        <div class="security-segment"></div><div class="security-segment"></div><div class="security-segment"></div><div class="security-segment"></div>
+                    </div>
+                    <div class="flex justify-between w-full mt-1">
+                        <span class="font-label-caps text-label-caps text-on-surface-variant">ENTROPY: <span class="text-primary" id="entropy-bits-1">-- BITS</span></span>
+                        <span id="grade-badge" class="px-2 py-0.5 bg-security-ultra/20 text-security-ultra rounded font-label-caps text-[10px] tracking-widest border border-security-ultra/30">--</span>
+                    </div>
+                </div>
+            </div>
+            <p class="font-metric-sm text-metric-sm text-on-surface-variant/70 text-center px-4" id="educational-tip">Initializing logic...</p>
         </section>
 
-        <div class="flex justify-center mb-4">
-            <div class="flex bg-white/5 backdrop-blur-md p-1 rounded-xl border border-white/10 shadow-inner">
-                <button id="mode-hybrid-btn" class="px-8 py-2.5 rounded-lg font-bold text-sm bg-sky-500 text-white shadow-lg transition-all" onclick="setMode('hybrid')">Hybrid Passphrase</button>
-                <button id="mode-random-btn" class="px-8 py-2.5 rounded-lg font-semibold text-sm text-white/60 hover:text-white transition-all" onclick="setMode('random')">Random Token</button>
-            </div>
-        </div>
-
-        <div class="glass-panel p-8 relative overflow-hidden group text-center flex flex-col items-center justify-center min-h-[200px]">
-            <p id="passphrase-display" class="font-mono text-3xl md:text-4xl font-bold text-white sky-glow tracking-tight break-all w-full select-all">Generating...</p>
-            <div class="flex gap-4 mt-8 w-full sm:w-auto">
-                <button id="regenerate-btn" class="primary-button px-8 py-3 rounded-xl font-bold flex items-center justify-center gap-2 text-sm" onclick="generatePassphrase()">
-                    <span class="material-symbols-outlined text-xl">autorenew</span> Regenerate
-                </button>
-                <button id="copy-btn" class="glass-button p-3 rounded-xl flex items-center justify-center text-white/90" onclick="copyToClipboard()">
-                    <span class="material-symbols-outlined">content_copy</span>
-                </button>
-            </div>
-        </div>
-
-        <div id="controls-hybrid" class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="glass-panel p-6 flex flex-col gap-4">
-                <div class="flex justify-between items-center"><label class="text-xs font-bold text-white/50 uppercase">Word Count</label><span id="word-count-display" class="font-mono text-xl font-bold text-sky-400">4</span></div>
-                <input id="word-count" type="range" min="3" max="12" value="4" oninput="document.getElementById('word-count-display').innerText=this.value" onchange="generatePassphrase()"/>
-            </div>
-            <div class="glass-panel p-6 flex flex-col gap-4">
-                <div class="flex justify-between items-center"><label class="text-xs font-bold text-white/50 uppercase">Symbol Interleaves</label><span id="symbol-count-display" class="font-mono text-xl font-bold text-sky-400">2</span></div>
-                <input id="symbol-count" type="range" min="0" max="6" value="2" oninput="document.getElementById('symbol-count-display').innerText=this.value" onchange="generatePassphrase()"/>
-            </div>
-            <div class="glass-panel p-6 flex items-center justify-between">
-                <span class="text-sm font-bold text-white">Title Case</span>
-                <input type="checkbox" id="cap-toggle" checked class="w-5 h-5 rounded" onchange="generatePassphrase()"/>
-            </div>
-        </div>
-
-        <div id="controls-random" class="grid grid-cols-1 md:grid-cols-2 gap-6 hidden">
-            <div class="glass-panel p-6 flex flex-col gap-4">
-                <div class="flex justify-between items-center"><label class="text-xs font-bold text-white/50 uppercase">Token Length</label><span id="length-display" class="font-mono text-xl font-bold text-sky-400">16</span></div>
-                <input id="length-slider" type="range" min="8" max="64" value="16" oninput="document.getElementById('length-display').innerText=this.value" onchange="generatePassphrase()"/>
-            </div>
-            <div class="glass-panel p-6 grid grid-cols-2 gap-4">
-                <label class="flex items-center gap-3"><input type="checkbox" id="chk-upper" checked class="w-5 h-5" onchange="generatePassphrase()"/><span class="text-sm">Uppercase</span></label>
-                <label class="flex items-center gap-3"><input type="checkbox" id="chk-lower" checked class="w-5 h-5" onchange="generatePassphrase()"/><span class="text-sm">Lowercase</span></label>
-                <label class="flex items-center gap-3"><input type="checkbox" id="chk-nums" checked class="w-5 h-5" onchange="generatePassphrase()"/><span class="text-sm">Numbers</span></label>
-                <label class="flex items-center gap-3"><input type="checkbox" id="chk-syms" checked class="w-5 h-5" onchange="generatePassphrase()"/><span class="text-sm">Symbols</span></label>
-            </div>
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            <div class="glass-panel p-6">
-                <h3 class="text-xs font-bold text-white/50 uppercase mb-2">Entropy & Grade</h3>
-                <div class="flex items-baseline gap-2 mb-4">
-                    <span id="entropy-display" class="text-3xl font-mono font-bold text-white">--</span><span class="text-sm text-white/40 font-mono">bits</span>
-                    <span id="grade-display" class="ml-4 px-2 py-1 rounded text-xs font-bold bg-sky-400/20 text-sky-400">STRONG</span>
+        <!-- Stats Grid (Bento Style) -->
+        <div class="grid grid-cols-2 gap-4 w-full">
+            <div class="glass-card rounded-xl p-5 flex flex-col justify-between aspect-square border-l-2 border-primary">
+                <span class="font-label-caps text-label-caps text-on-surface-variant">TIME_TO_CRACK</span>
+                <div class="flex flex-col">
+                    <span class="font-headline-md text-headline-md text-primary" id="time-pro">--</span>
+                    <span class="font-label-caps text-label-caps text-on-surface-variant opacity-60">GPU ARRAY</span>
                 </div>
-                <div class="w-full h-2 bg-white/10 rounded-full flex gap-1" id="strength-meter">
-                    <div class="h-full w-1/4 rounded-full"></div><div class="h-full w-1/4 rounded-full"></div><div class="h-full w-1/4 rounded-full"></div><div class="h-full w-1/4 rounded-full"></div>
+                <span class="material-symbols-outlined text-on-surface-variant/40">history</span>
+            </div>
+            <div class="glass-card rounded-xl p-5 flex flex-col justify-between aspect-square border-l-2 border-primary">
+                <span class="font-label-caps text-label-caps text-on-surface-variant">RESOURCES</span>
+                <div class="flex flex-col">
+                    <span class="font-headline-md text-headline-md text-primary" id="combinations-display">--</span>
+                    <span class="font-label-caps text-label-caps text-on-surface-variant opacity-60">GUESSES</span>
+                </div>
+                <span class="material-symbols-outlined text-on-surface-variant/40">memory</span>
+            </div>
+        </div>
+
+        <button class="fixed bottom-24 right-6 w-14 h-14 bg-primary text-on-primary rounded-full shadow-[0_4px_12px_rgba(16,185,129,0.4)] flex items-center justify-center active:scale-90 transition-all z-[60] group" onclick="generatePassphrase()">
+            <span class="material-symbols-outlined transition-transform group-hover:rotate-180 duration-500" style="font-variation-settings: 'FILL' 1;">refresh</span>
+        </button>
+    </main>
+
+    <!-- Tab 2: Settings -->
+    <main id="tab-settings" class="flex-grow w-full max-w-[480px] mx-auto px-container-margin py-8 hidden">
+        <div class="mb-8">
+            <h2 class="font-headline-md text-headline-md text-primary mb-2">PARAMETER_CONFIG</h2>
+            <p class="font-body-md text-on-surface-variant">Adjust cryptographic variables to balance memorability and brute-force resistance.</p>
+        </div>
+
+        <div class="glass-panel rounded-xl p-6 mb-stack-gap border-l-4 border-l-primary">
+            <div class="flex justify-between items-end mb-4">
+                <div>
+                    <span class="font-label-caps text-label-caps text-on-surface-variant block mb-1">STRENGTH_ESTIMATE</span>
+                    <div class="font-headline-lg text-headline-lg text-primary" id="entropy-value-2">-- Bits</div>
+                </div>
+                <div class="text-right">
+                    <span class="font-label-caps text-label-caps text-on-surface-variant block mb-1">MODE</span>
+                    <span class="font-metric-sm text-metric-sm text-primary" id="mode-display">HYBRID</span>
                 </div>
             </div>
-            <div class="glass-panel p-6">
-                <h3 class="text-xs font-bold text-white/50 uppercase mb-2">Mathematical Space</h3>
-                <p id="combinations-display" class="font-mono text-2xl font-bold text-white">--</p>
-                <p id="charset-display" class="text-xs text-white/40 mt-1 font-mono uppercase">Charset: --</p>
+        </div>
+
+        <div class="space-y-stack-gap">
+            <!-- Mode Switcher -->
+            <div class="bg-surface-charcoal border border-border-slate rounded-xl overflow-hidden p-2 flex">
+                <button id="mode-hybrid-btn" class="flex-1 py-2 font-label-caps text-sm bg-primary/20 text-primary rounded border border-primary transition-all" onclick="setMode('hybrid')">HYBRID</button>
+                <button id="mode-random-btn" class="flex-1 py-2 font-label-caps text-sm text-on-surface-variant rounded border border-transparent hover:border-border-slate transition-all" onclick="setMode('random')">RANDOM</button>
             </div>
-            <div class="glass-panel p-6 border border-rose-500/30">
-                <h3 class="text-xs font-bold text-white/50 uppercase mb-2">Attack Simulation</h3>
-                <div class="space-y-1">
-                    <p class="text-sm"><span class="text-white/60">Consumer CPU:</span> <span id="time-cpu" class="font-mono text-white font-bold">--</span></p>
-                    <p class="text-sm"><span class="text-white/60">Gaming GPU:</span> <span id="time-gpu" class="font-mono text-white font-bold">--</span></p>
-                    <p class="text-sm"><span class="text-white/60">Enterprise Cluster:</span> <span id="time-cluster" class="font-mono text-rose-400 font-bold">--</span></p>
+
+            <!-- Hybrid Controls -->
+            <div id="controls-hybrid" class="space-y-stack-gap">
+                <div class="bg-surface-charcoal border border-border-slate rounded-xl p-element-padding">
+                    <div class="flex justify-between items-center mb-4">
+                        <div class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-on-surface-variant">format_list_numbered</span>
+                            <label class="font-label-caps text-label-caps text-on-surface">WORD_COUNT</label>
+                        </div>
+                        <span class="font-metric-sm text-metric-sm text-primary bg-primary/10 px-2 py-1 rounded" id="word-count-display">4 Words</span>
+                    </div>
+                    <input class="mt-2" id="word-slider" max="12" min="3" type="range" value="4" oninput="document.getElementById('word-count-display').innerText=this.value+' Words'; generatePassphrase()"/>
+                </div>
+
+                <div class="bg-surface-charcoal border border-border-slate rounded-xl p-element-padding">
+                    <div class="flex justify-between items-center mb-4">
+                        <div class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-on-surface-variant">alternate_email</span>
+                            <label class="font-label-caps text-label-caps text-on-surface">SYMBOLS</label>
+                        </div>
+                        <span class="font-metric-sm text-metric-sm text-primary bg-primary/10 px-2 py-1 rounded" id="symbol-count-display">2 Syms</span>
+                    </div>
+                    <input class="mt-2" id="symbol-slider" max="6" min="0" type="range" value="2" oninput="document.getElementById('symbol-count-display').innerText=this.value+' Syms'; generatePassphrase()"/>
+                </div>
+                
+                <div class="bg-surface-charcoal border border-border-slate rounded-xl overflow-hidden">
+                    <div class="flex items-center justify-between p-element-padding border-b border-border-slate hover:bg-surface-variant/20 transition-colors">
+                        <div class="flex items-center gap-3">
+                            <span class="material-symbols-outlined text-on-surface-variant">match_case</span>
+                            <div>
+                                <span class="font-label-caps text-label-caps text-on-surface block">CAPITALIZATION</span>
+                                <span class="text-[10px] text-on-surface-variant">Title case words</span>
+                            </div>
+                        </div>
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input id="cap-toggle" checked class="sr-only custom-toggle" type="checkbox" onchange="generatePassphrase()"/>
+                            <div class="toggle-bg w-10 h-5 bg-surface-dim border border-border-slate rounded-full transition-all"></div>
+                            <div class="toggle-dot absolute left-1 top-1 bg-on-surface-variant w-3 h-3 rounded-full transition-all"></div>
+                        </label>
+                    </div>
                 </div>
             </div>
+
+            <!-- Random Controls -->
+            <div id="controls-random" class="space-y-stack-gap hidden">
+                <div class="bg-surface-charcoal border border-border-slate rounded-xl p-element-padding">
+                    <div class="flex justify-between items-center mb-4">
+                        <div class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-on-surface-variant">format_list_numbered</span>
+                            <label class="font-label-caps text-label-caps text-on-surface">LENGTH</label>
+                        </div>
+                        <span class="font-metric-sm text-metric-sm text-primary bg-primary/10 px-2 py-1 rounded" id="length-display">16 Chars</span>
+                    </div>
+                    <input class="mt-2" id="length-slider" max="64" min="8" type="range" value="16" oninput="document.getElementById('length-display').innerText=this.value+' Chars'; generatePassphrase()"/>
+                </div>
+
+                <div class="bg-surface-charcoal border border-border-slate rounded-xl overflow-hidden">
+                    <div class="flex items-center justify-between p-element-padding border-b border-border-slate hover:bg-surface-variant/20">
+                        <span class="font-label-caps text-label-caps text-on-surface block">UPPERCASE</span>
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input id="chk-upper" checked class="sr-only custom-toggle" type="checkbox" onchange="generatePassphrase()"/>
+                            <div class="toggle-bg w-10 h-5 bg-surface-dim border border-border-slate rounded-full transition-all"></div>
+                            <div class="toggle-dot absolute left-1 top-1 bg-on-surface-variant w-3 h-3 rounded-full transition-all"></div>
+                        </label>
+                    </div>
+                    <div class="flex items-center justify-between p-element-padding border-b border-border-slate hover:bg-surface-variant/20">
+                        <span class="font-label-caps text-label-caps text-on-surface block">LOWERCASE</span>
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input id="chk-lower" checked class="sr-only custom-toggle" type="checkbox" onchange="generatePassphrase()"/>
+                            <div class="toggle-bg w-10 h-5 bg-surface-dim border border-border-slate rounded-full transition-all"></div>
+                            <div class="toggle-dot absolute left-1 top-1 bg-on-surface-variant w-3 h-3 rounded-full transition-all"></div>
+                        </label>
+                    </div>
+                    <div class="flex items-center justify-between p-element-padding border-b border-border-slate hover:bg-surface-variant/20">
+                        <span class="font-label-caps text-label-caps text-on-surface block">NUMBERS</span>
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input id="chk-nums" checked class="sr-only custom-toggle" type="checkbox" onchange="generatePassphrase()"/>
+                            <div class="toggle-bg w-10 h-5 bg-surface-dim border border-border-slate rounded-full transition-all"></div>
+                            <div class="toggle-dot absolute left-1 top-1 bg-on-surface-variant w-3 h-3 rounded-full transition-all"></div>
+                        </label>
+                    </div>
+                    <div class="flex items-center justify-between p-element-padding hover:bg-surface-variant/20">
+                        <span class="font-label-caps text-label-caps text-on-surface block">SYMBOLS</span>
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input id="chk-syms" checked class="sr-only custom-toggle" type="checkbox" onchange="generatePassphrase()"/>
+                            <div class="toggle-bg w-10 h-5 bg-surface-dim border border-border-slate rounded-full transition-all"></div>
+                            <div class="toggle-dot absolute left-1 top-1 bg-on-surface-variant w-3 h-3 rounded-full transition-all"></div>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <button class="w-full bg-primary py-4 rounded-xl font-label-caps text-on-primary flex items-center justify-center gap-2 hover:brightness-110 active:scale-95 transition-all shadow-lg shadow-primary/20" onclick="switchTab('generator')">
+                <span class="material-symbols-outlined">refresh</span>
+                UPDATE_GENERATION_LOGIC
+            </button>
         </div>
     </main>
 
-    <!-- Benchmark Tab -->
-    <main id="tab-benchmark" class="flex-1 w-full max-w-6xl mx-auto p-6 flex flex-col gap-8 pb-24 hidden">
-        <div class="glass-panel p-8">
-            <h2 class="text-2xl font-bold mb-4">Empirical Benchmarking</h2>
-            <p class="text-white/70 mb-6">Run simulated generation cycles to validate randomness and performance.</p>
+    <!-- Tab 3: Insights -->
+    <main id="tab-insights" class="max-w-[480px] mx-auto px-4 pt-8 pb-32 space-y-8 hidden">
+        <section class="space-y-4">
+            <div class="glass-card rounded-xl p-6 text-center space-y-6 relative overflow-hidden">
+                <div class="flex justify-center">
+                    <span id="insight-grade-badge" class="bg-primary/10 border border-primary/20 text-primary px-3 py-1 rounded-full font-label-caps text-[10px] flex items-center gap-2">
+                        <span class="w-1.5 h-1.5 bg-primary rounded-full animate-pulse"></span>
+                        SECURITY_LEVEL: --
+                    </span>
+                </div>
+                <div class="space-y-2">
+                    <h2 class="font-passphrase-display text-passphrase-display text-primary tracking-wider break-all px-4" id="insight-passphrase">
+                        --
+                    </h2>
+                </div>
+                <div class="space-y-3 pt-4 border-t border-border-slate">
+                    <h3 class="font-headline-md text-headline-md text-left px-2 border-l-4 border-primary mt-4">BENCHMARK_SIMULATION</h3>
+                    <p class="text-xs text-on-surface-variant text-left px-2">Run extensive empirical simulations on the current configuration to evaluate statistical randomness.</p>
+                    <div class="flex gap-2">
+                        <input type="number" id="bench-count" value="1000" class="flex-1 bg-surface-dim border border-border-slate rounded px-3 font-metric-sm text-sm" placeholder="Iterations">
+                        <button class="bg-primary text-on-primary px-4 py-2 rounded font-label-caps active:scale-95" onclick="runBenchmark()">EXECUTE</button>
+                    </div>
+                </div>
+            </div>
             
-            <div class="flex gap-4 mb-8">
-                <input type="number" id="bench-count" value="1000" min="100" max="10000" class="bg-white/10 border border-white/20 rounded p-2 text-white font-mono" placeholder="Samples (e.g. 1000)" />
-                <button class="primary-button px-6 py-2 rounded-xl font-bold" onclick="runBenchmark()">Run Simulation</button>
+            <div id="bench-results" class="grid grid-cols-2 gap-4 hidden">
+                <div class="bg-surface-charcoal border border-border-slate p-3 rounded-lg"><p class="font-label-caps text-[10px] text-on-surface-variant">GEN_TIME</p><p id="bench-time" class="font-metric-sm text-primary">--</p></div>
+                <div class="bg-surface-charcoal border border-border-slate p-3 rounded-lg"><p class="font-label-caps text-[10px] text-on-surface-variant">SPEED</p><p id="bench-speed" class="font-metric-sm text-primary">--</p></div>
+                <div class="bg-surface-charcoal border border-border-slate p-3 rounded-lg"><p class="font-label-caps text-[10px] text-on-surface-variant">AVG_ENTROPY</p><p id="bench-entropy" class="font-metric-sm text-primary">--</p></div>
+                <div class="bg-surface-charcoal border border-border-slate p-3 rounded-lg"><p class="font-label-caps text-[10px] text-on-surface-variant">COLLISIONS</p><p id="bench-col" class="font-metric-sm text-primary">--</p></div>
+                <div class="bg-surface-charcoal border border-border-slate p-3 rounded-lg col-span-2 flex justify-between items-center"><p class="font-label-caps text-[10px] text-on-surface-variant">RANDOM_DISTRIBUTION</p><p id="bench-dist" class="font-metric-sm text-primary">--</p></div>
             </div>
+        </section>
 
-            <div id="bench-results" class="grid grid-cols-2 md:grid-cols-4 gap-4 hidden">
-                <div class="bg-white/5 p-4 rounded-lg"><p class="text-xs text-white/50 uppercase">Gen Time</p><p id="bench-time" class="text-xl font-mono font-bold text-sky-400">--</p></div>
-                <div class="bg-white/5 p-4 rounded-lg"><p class="text-xs text-white/50 uppercase">Speed</p><p id="bench-speed" class="text-xl font-mono font-bold text-sky-400">--</p></div>
-                <div class="bg-white/5 p-4 rounded-lg"><p class="text-xs text-white/50 uppercase">Avg Entropy</p><p id="bench-entropy" class="text-xl font-mono font-bold text-sky-400">--</p></div>
-                <div class="bg-white/5 p-4 rounded-lg"><p class="text-xs text-white/50 uppercase">Variance</p><p id="bench-var" class="text-xl font-mono font-bold text-sky-400">--</p></div>
-                <div class="bg-white/5 p-4 rounded-lg"><p class="text-xs text-white/50 uppercase">Collisions</p><p id="bench-col" class="text-xl font-mono font-bold text-emerald-400">--</p></div>
-                <div class="bg-white/5 p-4 rounded-lg"><p class="text-xs text-white/50 uppercase">Random Dist?</p><p id="bench-dist" class="text-xl font-mono font-bold text-emerald-400">--</p></div>
-                <div class="bg-white/5 p-4 rounded-lg col-span-2"><p class="text-xs text-white/50 uppercase">Chi-Square P-Value</p><p id="bench-pval" class="text-xl font-mono font-bold text-sky-400">--</p></div>
+        <section class="space-y-4">
+            <h3 class="font-headline-md text-headline-md px-2 border-l-4 border-primary">CRACK_TIME_EST</h3>
+            <div class="bg-surface-charcoal border border-border-slate rounded-xl overflow-hidden">
+                <table class="w-full text-left font-metric-sm text-metric-sm">
+                    <thead class="bg-surface-container-high border-b border-border-slate">
+                        <tr>
+                            <th class="px-4 py-3 font-label-caps text-[10px] text-on-surface-variant">ATTACK_VECTOR</th>
+                            <th class="px-4 py-3 font-label-caps text-[10px] text-on-surface-variant">DURATION</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-border-slate/50">
+                        <tr>
+                            <td class="px-4 py-4 flex items-center gap-2"><span class="material-symbols-outlined text-[16px]">desktop_windows</span> Standard CPU</td>
+                            <td class="px-4 py-4" id="insight-time-cpu">--</td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-4 flex items-center gap-2"><span class="material-symbols-outlined text-[16px]">memory</span> Gaming GPU</td>
+                            <td class="px-4 py-4" id="insight-time-gpu">--</td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-4 flex items-center gap-2"><span class="material-symbols-outlined text-[16px]">dns</span> Enterprise Cluster</td>
+                            <td class="px-4 py-4" id="insight-time-cluster">--</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-        </div>
+        </section>
     </main>
 
-    <div id="toast-container" class="fixed bottom-6 right-6 z-[100] flex flex-col gap-2"></div>
+    <!-- Tab 4: Vault/Tips -->
+    <main id="tab-education" class="max-w-[480px] mx-auto px-container-margin py-8 space-y-10 hidden">
+        <header class="space-y-4">
+            <h1 class="font-headline-lg text-headline-lg text-on-surface">Secure Your <span class="text-primary">Digital Vault</span></h1>
+            <p class="text-on-surface-variant font-body-md">Advanced cryptographic education for modern security protocols.</p>
+        </header>
 
+        <section class="grid grid-cols-1 gap-4">
+            <article class="bg-surface-charcoal border border-border-slate p-6 rounded-xl space-y-4">
+                <div class="flex items-center gap-3"><span class="material-symbols-outlined text-primary">vpn_key</span><h2 class="font-headline-md text-headline-md">Why Passphrases?</h2></div>
+                <p class="text-on-surface-variant font-body-md">Length beats complexity. A 20-character phrase of simple words is mathematically harder to crack than a short, complex 8-character password like <code class="font-metric-sm bg-surface-container p-1 rounded">P@ssw0rd1!</code>.</p>
+            </article>
+
+            <article class="bg-surface-charcoal border border-border-slate p-6 rounded-xl space-y-4">
+                <div class="flex items-center gap-3"><span class="material-symbols-outlined text-primary">analytics</span><h2 class="font-headline-md text-headline-md">What is Entropy?</h2></div>
+                <p class="text-on-surface-variant font-body-md">Entropy measures the "randomness" or unpredictability of your secret. It's measured in bits.</p>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="p-3 bg-surface-container-high rounded border border-border-slate">
+                        <p class="font-label-caps text-label-caps mb-1 opacity-60">LOW ENTROPY</p><p class="font-metric-sm text-security-weak">Easy Guessing</p>
+                    </div>
+                    <div class="p-3 bg-surface-container-high rounded border border-border-slate">
+                        <p class="font-label-caps text-label-caps mb-1 opacity-60">HIGH ENTROPY</p><p class="font-metric-sm text-security-ultra">Cryptographically Secure</p>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <section class="space-y-6 pb-12">
+            <h2 class="font-headline-md text-headline-md">Security FAQ</h2>
+            <div class="space-y-2">
+                <div class="accordion-item bg-surface-container-low rounded-lg border border-border-slate">
+                    <button class="w-full p-4 flex justify-between items-center text-left" onclick="toggleAccordion(this)">
+                        <span class="font-body-md font-semibold">Is it safe to write passwords down?</span>
+                        <span class="material-symbols-outlined transition-transform duration-300 chevron">expand_more</span>
+                    </button>
+                    <div class="accordion-content px-4 pb-4">
+                        <p class="text-on-surface-variant text-body-md">Physical notes are safer than digital text files, but a hardware-encrypted password manager is the superior industry standard.</p>
+                    </div>
+                </div>
+                <div class="accordion-item bg-surface-container-low rounded-lg border border-border-slate">
+                    <button class="w-full p-4 flex justify-between items-center text-left" onclick="toggleAccordion(this)">
+                        <span class="font-body-md font-semibold">How often should I rotate passwords?</span>
+                        <span class="material-symbols-outlined transition-transform duration-300 chevron">expand_more</span>
+                    </button>
+                    <div class="accordion-content px-4 pb-4">
+                        <p class="text-on-surface-variant text-body-md">Traditional rotation is outdated. Only change your password if you suspect a compromise or receive a breach alert.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Bottom Navigation Bar -->
+    <nav class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[480px] flex justify-around items-center px-2 py-3 pb-safe bg-surface-container-low/80 backdrop-blur-xl border-t border-border-slate shadow-[0_-4px_12px_rgba(0,0,0,0.4)] z-50 rounded-t-xl">
+        <a id="nav-generator" class="flex flex-col items-center justify-center text-primary bg-primary/10 rounded-xl p-2 transition-transform active:scale-90" href="#" onclick="switchTab('generator')">
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">vpn_key</span>
+            <span class="font-label-caps text-[10px] mt-1">GENERATOR</span>
+        </a>
+        <a id="nav-insights" class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-variant/50 transition-all active:scale-90" href="#" onclick="switchTab('insights')">
+            <span class="material-symbols-outlined">analytics</span>
+            <span class="font-label-caps text-[10px] mt-1">INSIGHTS</span>
+        </a>
+        <a id="nav-education" class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-variant/50 transition-all active:scale-90" href="#" onclick="switchTab('education')">
+            <span class="material-symbols-outlined">verified_user</span>
+            <span class="font-label-caps text-[10px] mt-1">VAULT_TIPS</span>
+        </a>
+        <a id="nav-settings" class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-variant/50 transition-all active:scale-90" href="#" onclick="switchTab('settings')">
+            <span class="material-symbols-outlined">settings</span>
+            <span class="font-label-caps text-[10px] mt-1">SETTINGS</span>
+        </a>
+    </nav>
+
+    <!-- JS Logic -->
     <script>
         let currentMode = "hybrid";
 
         function switchTab(tab) {
-            document.getElementById('tab-generator').classList.toggle('hidden', tab !== 'generator');
-            document.getElementById('tab-benchmark').classList.toggle('hidden', tab !== 'benchmark');
-            document.getElementById('nav-gen').className = tab === 'generator' ? "text-white font-medium border-b-2 border-sky-400 pb-1 cursor-pointer" : "text-white/60 hover:text-white transition-colors cursor-pointer";
-            document.getElementById('nav-bench').className = tab === 'benchmark' ? "text-white font-medium border-b-2 border-sky-400 pb-1 cursor-pointer" : "text-white/60 hover:text-white transition-colors cursor-pointer";
+            ['generator', 'settings', 'insights', 'education'].forEach(t => {
+                document.getElementById('tab-' + t).classList.add('hidden');
+                const navBtn = document.getElementById('nav-' + t);
+                navBtn.className = "flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-variant/50 transition-all active:scale-90";
+                navBtn.querySelector('.material-symbols-outlined').style.fontVariationSettings = "'FILL' 0";
+            });
+            
+            document.getElementById('tab-' + tab).classList.remove('hidden');
+            const activeBtn = document.getElementById('nav-' + tab);
+            activeBtn.className = "flex flex-col items-center justify-center text-primary bg-primary/10 rounded-xl p-2 transition-transform active:scale-90";
+            activeBtn.querySelector('.material-symbols-outlined').style.fontVariationSettings = "'FILL' 1";
         }
 
         function setMode(mode) {
             currentMode = mode;
             document.getElementById("controls-hybrid").classList.toggle("hidden", mode !== "hybrid");
             document.getElementById("controls-random").classList.toggle("hidden", mode !== "random");
-            document.getElementById("mode-hybrid-btn").className = mode === 'hybrid' ? "px-8 py-2.5 rounded-lg font-bold text-sm bg-sky-500 text-white shadow-lg" : "px-8 py-2.5 rounded-lg font-semibold text-sm text-white/60 hover:text-white";
-            document.getElementById("mode-random-btn").className = mode === 'random' ? "px-8 py-2.5 rounded-lg font-bold text-sm bg-sky-500 text-white shadow-lg" : "px-8 py-2.5 rounded-lg font-semibold text-sm text-white/60 hover:text-white";
+            document.getElementById("mode-hybrid-btn").className = mode === 'hybrid' ? "flex-1 py-2 font-label-caps text-sm bg-primary/20 text-primary rounded border border-primary transition-all" : "flex-1 py-2 font-label-caps text-sm text-on-surface-variant rounded border border-transparent hover:border-border-slate transition-all";
+            document.getElementById("mode-random-btn").className = mode === 'random' ? "flex-1 py-2 font-label-caps text-sm bg-primary/20 text-primary rounded border border-primary transition-all" : "flex-1 py-2 font-label-caps text-sm text-on-surface-variant rounded border border-transparent hover:border-border-slate transition-all";
+            document.getElementById("mode-display").innerText = mode.toUpperCase();
             generatePassphrase();
         }
 
-        function showToast(msg) {
-            const t = document.createElement("div"); t.className = "glass-panel px-4 py-3 text-sm flex gap-2"; t.innerHTML = `<span>✅</span>${msg}`;
-            document.getElementById("toast-container").appendChild(t);
-            setTimeout(() => t.remove(), 3000);
+        function toggleAccordion(btn) {
+            const item = btn.parentElement;
+            const isActive = item.classList.contains('active');
+            document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('active'));
+            if (!isActive) item.classList.add('active');
         }
 
         function copyToClipboard() {
-            navigator.clipboard.writeText(document.getElementById("passphrase-display").innerText);
-            showToast("Copied to clipboard!");
+            navigator.clipboard.writeText(document.getElementById("passphrase-output").innerText);
+            const icon = document.getElementById("copy-icon");
+            icon.innerText = "check";
+            icon.classList.add("text-primary");
+            setTimeout(() => { icon.innerText = "content_copy"; icon.classList.remove("text-primary"); }, 2000);
         }
 
         async function generatePassphrase() {
             let payload = { mode: currentMode };
             if (currentMode === "hybrid") {
-                payload.words = parseInt(document.getElementById("word-count").value);
-                payload.symbols = parseInt(document.getElementById("symbol-count").value);
+                payload.words = parseInt(document.getElementById("word-slider").value);
+                payload.symbols = parseInt(document.getElementById("symbol-slider").value);
                 payload.capitalize = document.getElementById("cap-toggle").checked;
             } else {
                 payload.length = parseInt(document.getElementById("length-slider").value);
@@ -205,37 +509,63 @@
                 payload.use_nums = document.getElementById("chk-nums").checked;
                 payload.use_syms = document.getElementById("chk-syms").checked;
             }
+
+            document.getElementById("passphrase-output").style.opacity = '0.5';
             
             try {
                 const res = await fetch('/api/generate', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
                 const data = await res.json();
                 
-                document.getElementById("passphrase-display").innerText = data.passphrase;
-                document.getElementById("entropy-display").innerText = data.entropy;
-                document.getElementById("grade-display").innerText = data.grade;
-                document.getElementById("combinations-display").innerText = data.combinations;
-                document.getElementById("charset-display").innerText = `Charset: ${data.charset_size}`;
+                document.getElementById("passphrase-output").innerText = data.passphrase;
+                document.getElementById("insight-passphrase").innerText = data.passphrase;
                 
-                document.getElementById("time-cpu").innerText = data.crack_times.consumer_cpu;
-                document.getElementById("time-gpu").innerText = data.crack_times.gaming_gpu;
-                document.getElementById("time-cluster").innerText = data.crack_times.distributed_cluster;
+                document.getElementById("entropy-bits-1").innerText = `${data.entropy} BITS`;
+                document.getElementById("entropy-value-2").innerText = `${data.entropy} Bits`;
+                
+                const gradeClass = data.grade === "WEAK" ? "text-security-weak bg-security-weak/20 border-security-weak/30" : 
+                                   data.grade === "SECURE" ? "text-security-secure bg-security-secure/20 border-security-secure/30" : 
+                                   "text-security-ultra bg-security-ultra/20 border-security-ultra/30";
+                
+                document.getElementById("grade-badge").className = `px-2 py-0.5 rounded font-label-caps text-[10px] tracking-widest border ${gradeClass}`;
+                document.getElementById("grade-badge").innerText = data.grade;
+                document.getElementById("insight-grade-badge").innerHTML = `<span class="w-1.5 h-1.5 bg-current rounded-full animate-pulse"></span> SECURITY_LEVEL: ${data.grade}`;
+                document.getElementById("insight-grade-badge").className = `border px-3 py-1 rounded-full font-label-caps text-[10px] flex items-center gap-2 ${gradeClass}`;
 
-                const blocks = document.getElementById("strength-meter").children;
-                let active = data.grade === "WEAK" ? 1 : data.grade === "SECURE" ? 2 : data.grade === "STRONG" ? 3 : 4;
-                let color = data.grade === "WEAK" ? "bg-rose-400" : data.grade === "SECURE" ? "bg-sky-400" : "bg-emerald-400";
-                for(let i=0; i<4; i++) blocks[i].className = `h-full w-1/4 rounded-full transition-all duration-500 ${i < active ? color : 'bg-white/10'}`;
+                document.getElementById("combinations-display").innerText = data.combinations;
+                document.getElementById("time-pro").innerText = data.crack_times.gaming_gpu;
+                
+                document.getElementById("insight-time-cpu").innerText = data.crack_times.consumer_cpu;
+                document.getElementById("insight-time-gpu").innerText = data.crack_times.gaming_gpu;
+                document.getElementById("insight-time-cluster").innerText = data.crack_times.distributed_cluster;
+                
+                let colorClass = data.grade === "WEAK" ? "active-red" : data.grade === "SECURE" ? "active-amber" : "active-green";
+                let numActive = data.grade === "WEAK" ? 4 : data.grade === "SECURE" ? 8 : 12;
+                
+                const segments = document.getElementById("strength-meter").children;
+                for(let i=0; i<12; i++) {
+                    segments[i].className = "security-segment";
+                    if (i < numActive) segments[i].classList.add(colorClass);
+                }
 
-            } catch (err) { console.error(err); }
+                if (currentMode === "hybrid") {
+                    document.getElementById("educational-tip").innerText = payload.words < 5 ? "Adding another word increases entropy exponentially." : "Strong logical length achieved.";
+                } else {
+                    document.getElementById("educational-tip").innerText = payload.length < 16 ? "Length is critical for random tokens. Increase length." : "Secure random sequence generated.";
+                }
+
+            } catch (err) { console.error(err); } finally {
+                document.getElementById("passphrase-output").style.opacity = '1';
+            }
         }
 
         async function runBenchmark() {
+            const count = parseInt(document.getElementById("bench-count").value) || 1000;
             document.getElementById("bench-results").classList.remove("hidden");
-            const count = parseInt(document.getElementById("bench-count").value);
             
             let payload = { mode: currentMode, count: count };
             if (currentMode === "hybrid") {
-                payload.words = parseInt(document.getElementById("word-count").value);
-                payload.symbols = parseInt(document.getElementById("symbol-count").value);
+                payload.words = parseInt(document.getElementById("word-slider").value);
+                payload.symbols = parseInt(document.getElementById("symbol-slider").value);
             } else {
                 payload.length = parseInt(document.getElementById("length-slider").value);
             }
@@ -247,18 +577,12 @@
                 document.getElementById("bench-time").innerText = `${data.generation_time_sec}s`;
                 document.getElementById("bench-speed").innerText = `${data.speed_per_sec}/s`;
                 document.getElementById("bench-entropy").innerText = `${data.avg_entropy}b`;
-                document.getElementById("bench-var").innerText = data.entropy_variance;
                 document.getElementById("bench-col").innerText = data.collision_count;
                 document.getElementById("bench-dist").innerText = data.is_random_dist ? "YES" : "NO";
-                document.getElementById("bench-pval").innerText = data.p_value;
                 
-                if (data.collision_count > 0) {
-                    document.getElementById("bench-col").className = "text-xl font-mono font-bold text-rose-400";
-                } else {
-                    document.getElementById("bench-col").className = "text-xl font-mono font-bold text-emerald-400";
-                }
+                document.getElementById("bench-col").className = data.collision_count > 0 ? "font-metric-sm text-security-weak" : "font-metric-sm text-security-ultra";
+                document.getElementById("bench-dist").className = data.is_random_dist ? "font-metric-sm text-security-ultra" : "font-metric-sm text-security-weak";
                 
-                showToast("Benchmark Complete!");
             } catch (err) { console.error(err); }
         }
 

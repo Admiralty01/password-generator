@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Hanken+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-dim": "#d8dadc",
+                        "on-tertiary-fixed": "#001a42",
+                        "secondary-fixed-dim": "#bec6e0",
+                        "secondary-fixed": "#dae2fd",
+                        "tertiary-container": "#71a1ff",
+                        "on-background": "#191c1e",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-container": "#00367a",
+                        "tertiary-fixed-dim": "#adc6ff",
+                        "surface-container-high": "#e6e8ea",
+                        "on-secondary-fixed-variant": "#3f465c",
+                        "on-tertiary-fixed-variant": "#004395",
+                        "tertiary": "#005ac2",
+                        "background": "#f7f9fb",
+                        "on-secondary-fixed": "#131b2e",
+                        "primary-fixed-dim": "#4edea3",
+                        "on-error": "#ffffff",
+                        "surface-tint": "#006c49",
+                        "on-secondary-container": "#5c647a",
+                        "surface-container": "#eceef0",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-primary-fixed-variant": "#005236",
+                        "primary": "#006c49",
+                        "tertiary-fixed": "#d8e2ff",
+                        "primary-container": "#10b981",
+                        "error-container": "#ffdad6",
+                        "error": "#ba1a1a",
+                        "secondary": "#565e74",
+                        "surface": "#f7f9fb",
+                        "on-secondary": "#ffffff",
+                        "outline": "#6c7a71",
+                        "on-surface-variant": "#3c4a42",
+                        "on-primary": "#ffffff",
+                        "on-surface": "#191c1e",
+                        "outline-variant": "#bbcabf",
+                        "surface-container-low": "#f2f4f6",
+                        "inverse-on-surface": "#eff1f3",
+                        "on-primary-container": "#00422b",
+                        "surface-bright": "#f7f9fb",
+                        "on-primary-fixed": "#002113",
+                        "secondary-container": "#dae2fd",
+                        "on-error-container": "#93000a",
+                        "primary-fixed": "#6ffbbe",
+                        "surface-variant": "#e0e3e5",
+                        "inverse-primary": "#4edea3",
+                        "inverse-surface": "#2d3133",
+                        "security-ultra": "#10B981",
+                        "security-secure": "#F59E0B",
+                        "security-weak": "#EF4444"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "base": "8px",
+                        "stack-sm": "4px",
+                        "margin-mobile": "16px",
+                        "gutter": "24px",
+                        "stack-lg": "24px",
+                        "margin-desktop": "32px",
+                        "stack-md": "12px",
+                        "glass-padding": "1.5rem",
+                        "element-padding": "1rem"
+                    },
+                    "fontFamily": {
+                        "headline-xl": ["Hanken Grotesk"],
+                        "label-caps": ["JetBrains Mono"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "mono-data": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "headline-xl": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-lg": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "mono-data": ["13px", {"lineHeight": "18px", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: #ffffff;
+            border: 1px solid #eceef0;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+        }
+        .security-segment {
+            height: 4px;
+            flex: 1;
+            margin-right: 2px;
+            border-radius: 2px;
+        }
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen selection:bg-primary/20">
+<!-- TopAppBar -->
+<header class="bg-white border-b border-surface-container-high sticky top-0 z-50">
+<div class="flex justify-between items-center w-full px-glass-padding py-4 max-w-[480px] mx-auto">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">security</span>
+<h1 class="font-label-caps text-label-caps tracking-widest text-primary">KEY_GEN_SYSTEM</h1>
+</div>
+<button class="active:scale-95 transition-transform duration-100">
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">info</span>
+</button>
+</div>
+</header>
+<main class="max-w-[480px] mx-auto px-4 pt-8 pb-32 space-y-8">
+<!-- Passphrase Hero Section -->
+<section class="space-y-4">
+<div class="glass-card rounded-xl p-6 text-center space-y-6 relative overflow-hidden">
+<!-- Status Chip -->
+<div class="flex justify-center">
+<span class="bg-primary/5 border border-primary/10 text-primary px-3 py-1 rounded-full font-label-caps text-[10px] flex items-center gap-2">
+<span class="w-1.5 h-1.5 bg-primary rounded-full animate-pulse"></span>
+                        SECURITY_LEVEL: ULTRA
+                    </span>
+</div>
+<div class="space-y-2">
+<h2 class="font-mono-data text-[22px] text-primary tracking-wider break-all px-4">
+                        kX9-!vP2_mQ4*sL7
+                    </h2>
+<div class="flex justify-center gap-4 pt-2">
+<button class="p-2 hover:bg-surface-container rounded-lg transition-all active:scale-90" title="Refresh">
+<span class="material-symbols-outlined text-on-surface-variant">refresh</span>
+</button>
+<button class="p-2 hover:bg-surface-container rounded-lg transition-all active:scale-90" title="Copy">
+<span class="material-symbols-outlined text-on-surface-variant">content_copy</span>
+</button>
+</div>
+</div>
+<!-- Entropy Gauge Component -->
+<div class="space-y-3 pt-4">
+<div class="flex justify-between font-label-caps text-[10px] text-on-surface-variant">
+<span>ENTROPY_ANALYSIS</span>
+<span class="text-primary">128_BITS</span>
+</div>
+<div class="flex">
+<div class="security-segment bg-security-ultra"></div>
+<div class="security-segment bg-security-ultra"></div>
+<div class="security-segment bg-security-ultra"></div>
+<div class="security-segment bg-security-ultra"></div>
+<div class="security-segment bg-security-ultra"></div>
+<div class="security-segment bg-security-ultra"></div>
+<div class="security-segment bg-security-ultra"></div>
+<div class="security-segment bg-security-ultra"></div>
+<div class="security-segment bg-security-ultra"></div>
+<div class="security-segment bg-security-ultra"></div>
+<div class="security-segment bg-security-ultra"></div>
+<div class="security-segment bg-security-ultra"></div>
+</div>
+</div>
+</div>
+<!-- Entropy Metrics readout -->
+<div class="flex justify-between px-2">
+<div class="text-center">
+<p class="font-label-caps text-[10px] text-on-surface-variant uppercase mb-1">Brute Force</p>
+<p class="font-mono-data text-mono-data text-on-surface">3.4e+22 Yrs</p>
+</div>
+<div class="w-px h-8 bg-surface-container-high"></div>
+<div class="text-center">
+<p class="font-label-caps text-[10px] text-on-surface-variant uppercase mb-1">Complexity</p>
+<p class="font-mono-data text-mono-data text-on-surface">High-Crypt</p>
+</div>
+<div class="w-px h-8 bg-surface-container-high"></div>
+<div class="text-center">
+<p class="font-label-caps text-[10px] text-on-surface-variant uppercase mb-1">Dictionary</p>
+<p class="font-mono-data text-mono-data text-on-surface">Immune</p>
+</div>
+</div>
+</section>
+<!-- Attack Duration Comparison -->
+<section class="space-y-4">
+<h3 class="font-headline-md text-headline-md px-2 border-l-4 border-primary">CRACK_TIME_EST</h3>
+<div class="bg-white border border-surface-container-high rounded-xl overflow-hidden shadow-sm">
+<table class="w-full text-left font-mono-data text-mono-data">
+<thead class="bg-surface-container-low border-b border-surface-container-high">
+<tr>
+<th class="px-4 py-3 font-label-caps text-[10px] text-on-surface-variant">ATTACK_VECTOR</th>
+<th class="px-4 py-3 font-label-caps text-[10px] text-on-surface-variant">DURATION</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-high/50">
+<tr>
+<td class="px-4 py-4 flex items-center gap-2 text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">desktop_windows</span>
+                                Standard_CPU
+                            </td>
+<td class="px-4 py-4 text-security-ultra font-semibold">Centuries+</td>
+</tr>
+<tr>
+<td class="px-4 py-4 flex items-center gap-2 text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">memory</span>
+                                High-End_GPU_Array
+                            </td>
+<td class="px-4 py-4 text-security-ultra font-semibold">942 Million Yrs</td>
+</tr>
+<tr>
+<td class="px-4 py-4 flex items-center gap-2 text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">psychology</span>
+                                Quantum_Grover
+                            </td>
+<td class="px-4 py-4 text-security-secure font-semibold">~120 Yrs (Theoretical)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- Security Classification -->
+<section class="space-y-4">
+<div class="bg-white rounded-xl p-element-padding border border-surface-container-high border-l-4 border-security-ultra shadow-sm">
+<div class="flex items-start gap-4">
+<div class="bg-security-ultra/10 p-2 rounded-lg">
+<span class="material-symbols-outlined text-security-ultra" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<div>
+<h4 class="font-headline-md text-[18px] mb-2 text-on-surface">Why 'ULTRA' Status?</h4>
+<p class="font-body-md text-on-surface-variant leading-relaxed">
+                            This passphrase utilizes a 128-bit entropy pool, the cryptographic gold standard for long-term data protection. It is constructed to resist both algorithmic dictionary attacks and birthday paradox collisions.
+                        </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Recommendations Grid -->
+<section class="space-y-4">
+<h3 class="font-headline-md text-headline-md px-2 border-l-4 border-primary">DEPLOYMENT_ZONES</h3>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-white p-4 rounded-xl border border-surface-container-high hover:border-primary/50 transition-colors shadow-sm">
+<span class="material-symbols-outlined text-primary mb-3">account_balance_wallet</span>
+<p class="font-label-caps text-[10px] text-on-surface-variant mb-1">ROOT_ACCESS</p>
+<p class="font-body-sm text-on-surface font-semibold">Cold Storage Wallets</p>
+</div>
+<div class="bg-white p-4 rounded-xl border border-surface-container-high hover:border-primary/50 transition-colors shadow-sm">
+<span class="material-symbols-outlined text-primary mb-3">lan</span>
+<p class="font-label-caps text-[10px] text-on-surface-variant mb-1">SYS_ADMIN</p>
+<p class="font-body-sm text-on-surface font-semibold">Server Master Keys</p>
+</div>
+<div class="bg-white p-4 rounded-xl border border-surface-container-high hover:border-primary/50 transition-colors shadow-sm">
+<span class="material-symbols-outlined text-primary mb-3">database</span>
+<p class="font-label-caps text-[10px] text-on-surface-variant mb-1">DB_ENC</p>
+<p class="font-body-sm text-on-surface font-semibold">Sensitive Archives</p>
+</div>
+<div class="bg-white p-4 rounded-xl border border-surface-container-high hover:border-primary/50 transition-colors shadow-sm">
+<span class="material-symbols-outlined text-primary mb-3">encrypted</span>
+<p class="font-label-caps text-[10px] text-on-surface-variant mb-1">GOV_SPEC</p>
+<p class="font-body-sm text-on-surface font-semibold">Classified Comms</p>
+</div>
+</div>
+</section>
+<!-- Decorative Aesthetic Component -->
+<div class="relative h-32 rounded-xl overflow-hidden border border-surface-container-high bg-surface-container-low shadow-sm">
+<img alt="Security Infrastructure" class="w-full h-full object-cover opacity-10" data-alt="A high-tech digital server room corridor with glowing green circuitry lines embedded in dark slate walls. The perspective leads deep into a secure data vault. The atmosphere is quiet, professional, and technologically advanced, using a palette of deep charcoal and vibrant emerald greens for a cyber-professional look. Sharp focus and cinematic lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfWoTtT5dECRihu8FcYjydQyw-k5g4W9HfZFqeZv7k1d7Q6e_TPVgEKF5c1Lkopd6XK-Bhtujjj81r5P7ThgLZelWHkrRrASHL6Pcigi33jRvGXDiuv_O3RSiSPJc1VpXd1WNBBqDfrUjFoTvUMxGcPwZNWQNDQXGPZC0NWRT81mLszCMUG9V0asxecmnPGNU1Y13vFzveZ6OuiCavk1A6gMetNJt7hbVuWjjENkue1UQ4YYRHp_7I8xPc31saBkumyBFjv9oqtczf"/>
+<div class="absolute inset-0 bg-gradient-to-t from-white/90 to-transparent"></div>
+<div class="absolute bottom-4 left-4">
+<p class="font-label-caps text-[10px] text-primary">AUTHORIZED_ONLY</p>
+<p class="font-headline-md text-[14px] text-on-surface">System Integrity: 100%</p>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[480px] flex justify-around items-center px-4 py-3 pb-safe bg-white/90 backdrop-blur-xl border-t border-surface-container-high shadow-[0_-4px_12px_rgba(0,0,0,0.05)] z-50 rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-primary bg-primary/5 rounded-xl p-2 transition-transform active:scale-90" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">vpn_key</span>
+<span class="font-label-caps text-[10px] mt-1">GENERATOR</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-container/50 transition-all active:scale-90" href="#">
+<span class="material-symbols-outlined">verified_user</span>
+<span class="font-label-caps text-[10px] mt-1">VAULT_TIPS</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-container/50 transition-all active:scale-90" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-caps text-[10px] mt-1">SETTINGS</span>
+</a>
+</nav>
+<!-- Drawer -->
+<div class="fixed right-0 h-full w-[280px] z-[60] bg-white backdrop-blur-2xl border-l border-surface-container-high shadow-2xl translate-x-full transition-transform duration-300" id="drawer">
+<div class="flex flex-col h-full py-element-padding">
+<div class="px-6 py-4">
+<h2 class="font-headline-md text-headline-md text-primary mb-6">PARAMETER_CONFIG</h2>
+<div class="space-y-2">
+<div class="bg-primary text-on-primary font-bold rounded-lg p-3 flex items-center gap-3 active:opacity-80 transition-opacity cursor-pointer">
+<span class="material-symbols-outlined">format_list_numbered</span>
+<span class="font-label-caps text-label-caps">WORD_COUNT</span>
+</div>
+<div class="text-on-surface-variant hover:bg-surface-container rounded-lg p-3 flex items-center gap-3 transition-all cursor-pointer">
+<span class="material-symbols-outlined">alternate_email</span>
+<span class="font-label-caps text-label-caps">SYMBOLS</span>
+</div>
+<div class="text-on-surface-variant hover:bg-surface-container rounded-lg p-3 flex items-center gap-3 transition-all cursor-pointer">
+<span class="material-symbols-outlined">match_case</span>
+<span class="font-label-caps text-label-caps">CAPITALIZATION</span>
+</div>
+<div class="text-on-surface-variant hover:bg-surface-container rounded-lg p-3 flex items-center gap-3 transition-all cursor-pointer">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-caps text-label-caps">ENTROPY_MODE</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+        const copyBtn = document.querySelector('button[title="Copy"]');
+        copyBtn.addEventListener('click', () => {
+            const icon = copyBtn.querySelector('.material-symbols-outlined');
+            icon.innerText = 'check';
+            icon.classList.add('text-primary');
+            setTimeout(() => {
+                icon.innerText = 'content_copy';
+                icon.classList.remove('text-primary');
+            }, 2000);
+        });
+
+        const infoBtn = document.querySelector('header button .material-symbols-outlined');
+        const drawer = document.getElementById('drawer');
+        let isOpen = false;
+        infoBtn.parentElement.addEventListener('click', () => {
+            isOpen = !isOpen;
+            drawer.style.transform = isOpen ? 'translateX(0)' : 'translateX(100%)';
+        });
+    </script>
+</body></html>

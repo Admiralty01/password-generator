@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Security Education | KEY_GEN_SYSTEM</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .security-segment {
+            height: 4px;
+            border-radius: 2px;
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .accordion-item.active .accordion-content {
+            max-height: 200px;
+        }
+        .accordion-item.active .chevron {
+            transform: rotate(180deg);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                "on-surface-variant": "#bbcabf",
+                "border-slate": "#334155",
+                "on-secondary": "#213145",
+                "surface-charcoal": "#1E293B",
+                "tertiary-fixed": "#ffdad7",
+                "surface-dim": "#0b1326",
+                "tertiary-container": "#fc7c78",
+                "on-secondary-container": "#a9bad3",
+                "surface": "#0b1326",
+                "surface-container-high": "#222a3d",
+                "on-primary-fixed-variant": "#005236",
+                "on-primary": "#003824",
+                "security-ultra": "#10B981",
+                "on-primary-fixed": "#002113",
+                "security-weak": "#EF4444",
+                "error-container": "#93000a",
+                "surface-container-low": "#131b2e",
+                "on-error-container": "#ffdad6",
+                "inverse-surface": "#dae2fd",
+                "inverse-primary": "#006c49",
+                "security-secure": "#F59E0B",
+                "secondary-container": "#3a4a5f",
+                "on-error": "#690005",
+                "outline": "#86948a",
+                "tertiary-fixed-dim": "#ffb3af",
+                "surface-container-lowest": "#060e20",
+                "primary-fixed-dim": "#4edea3",
+                "on-tertiary-fixed-variant": "#842225",
+                "inverse-on-surface": "#283044",
+                "surface-tint": "#4edea3",
+                "on-tertiary-container": "#711419",
+                "surface-variant": "#2d3449",
+                "outline-variant": "#3c4a42",
+                "secondary-fixed-dim": "#b7c8e1",
+                "primary-container": "#10b981",
+                "on-background": "#dae2fd",
+                "background": "#0b1326",
+                "surface-bright": "#31394d",
+                "tertiary": "#ffb3af",
+                "on-secondary-fixed-variant": "#38485d",
+                "secondary-fixed": "#d3e4fe",
+                "secondary": "#b7c8e1",
+                "primary-fixed": "#6ffbbe",
+                "on-secondary-fixed": "#0b1c30",
+                "primary": "#4edea3",
+                "on-tertiary-fixed": "#410005",
+                "on-surface": "#dae2fd",
+                "surface-container-highest": "#2d3449",
+                "error": "#ffb4ab",
+                "on-tertiary": "#650911",
+                "surface-container": "#171f33",
+                "on-primary-container": "#00422b"
+              },
+              "borderRadius": {
+                "DEFAULT": "0.125rem",
+                "lg": "0.25rem",
+                "xl": "0.5rem",
+                "full": "0.75rem"
+              },
+              "spacing": {
+                "glass-padding": "1.5rem",
+                "element-padding": "1rem",
+                "stack-gap": "1rem",
+                "container-margin": "1.25rem"
+              },
+              "fontFamily": {
+                "headline-lg": ["Inter"],
+                "label-caps": ["JetBrains Mono"],
+                "headline-md": ["Inter"],
+                "body-lg": ["Inter"],
+                "metric-sm": ["JetBrains Mono"],
+                "body-md": ["Inter"],
+                "passphrase-display": ["JetBrains Mono"]
+              },
+              "fontSize": {
+                "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                "metric-sm": ["14px", {"lineHeight": "1.2", "fontWeight": "400"}],
+                "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                "passphrase-display": ["22px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "500"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-md selection:bg-primary/30 min-h-screen pb-32">
+<!-- Top Navigation -->
+<nav class="bg-surface-dim dark:bg-surface-dim flex justify-between items-center w-full px-glass-padding py-4 max-w-[480px] mx-auto border-b border-border-slate dark:border-border-slate sticky top-0 z-50">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="security">security</span>
+<span class="font-label-caps text-label-caps tracking-widest text-primary">KEY_GEN_SYSTEM</span>
+</div>
+<button class="active:scale-95 transition-transform duration-100">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="info">info</span>
+</button>
+</nav>
+<main class="max-w-[480px] mx-auto px-container-margin py-8 space-y-10">
+<!-- Hero Section -->
+<header class="space-y-4">
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Secure Your <span class="text-primary">Digital Vault</span></h1>
+<p class="text-on-surface-variant font-body-md">Advanced cryptographic education for modern security protocols.</p>
+</header>
+<!-- Bento Grid: Education Sections -->
+<section class="grid grid-cols-1 gap-4">
+<!-- Why Passphrases? -->
+<article class="bg-surface-charcoal border border-border-slate p-6 rounded-xl space-y-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="vpn_key">vpn_key</span>
+<h2 class="font-headline-md text-headline-md">Why Passphrases?</h2>
+</div>
+<p class="text-on-surface-variant font-body-md">Length beats complexity. A 20-character phrase of simple words is mathematically harder to crack than a short, complex 8-character password like <code class="font-metric-sm bg-surface-container p-1 rounded">P@ssw0rd1!</code>.</p>
+<div class="bg-surface-container-low border border-border-slate p-4 rounded-lg">
+<div class="flex justify-between items-center mb-2">
+<span class="font-label-caps text-label-caps">STRENGTH RATIO</span>
+<span class="font-metric-sm text-security-ultra">1:4000x</span>
+</div>
+<div class="flex gap-1">
+<div class="flex-1 security-segment bg-security-ultra"></div>
+<div class="flex-1 security-segment bg-security-ultra"></div>
+<div class="flex-1 security-segment bg-security-ultra"></div>
+<div class="flex-1 security-segment bg-surface-variant"></div>
+</div>
+</div>
+</article>
+<!-- What is Entropy? -->
+<article class="bg-surface-charcoal border border-border-slate p-6 rounded-xl space-y-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="analytics">analytics</span>
+<h2 class="font-headline-md text-headline-md">What is Entropy?</h2>
+</div>
+<p class="text-on-surface-variant font-body-md">Entropy measures the "randomness" or unpredictability of your secret. It's measured in bits.</p>
+<div class="grid grid-cols-2 gap-4">
+<div class="p-3 bg-surface-container-high rounded border border-border-slate">
+<p class="font-label-caps text-label-caps mb-1 opacity-60">LOW ENTROPY</p>
+<p class="font-metric-sm text-security-weak">Easy Guessing</p>
+</div>
+<div class="p-3 bg-surface-container-high rounded border border-border-slate">
+<p class="font-label-caps text-label-caps mb-1 opacity-60">HIGH ENTROPY</p>
+<p class="font-metric-sm text-security-ultra">Cryptographically Secure</p>
+</div>
+</div>
+</article>
+<!-- How Attackers Work -->
+<article class="glass-card p-6 rounded-xl space-y-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-security-weak" data-icon="monitoring">monitoring</span>
+<h2 class="font-headline-md text-headline-md">How Attackers Work</h2>
+</div>
+<p class="text-on-surface-variant font-body-md">Adversaries use GPU-accelerated clusters to perform billions of hashes per second. They use dictionaries and "leaked" databases to predict your patterns.</p>
+<div class="relative overflow-hidden h-32 rounded-lg border border-border-slate bg-black/40">
+<div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary via-transparent to-transparent"></div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center">
+<span class="font-label-caps text-[10px] text-primary/50 block">BRUTE-FORCE SIMULATION ACTIVE</span>
+<span class="font-metric-sm text-primary tracking-widest" id="brute-ticker">HASHING: 4.2B/sec</span>
+</div>
+</div>
+</article>
+</section>
+<!-- Interactive Checklist -->
+<section class="space-y-6">
+<h2 class="font-headline-md text-headline-md">Best Practices</h2>
+<div class="space-y-3">
+<label class="flex items-center gap-4 p-4 bg-surface-container-low border border-border-slate rounded-lg cursor-pointer hover:bg-surface-container-high transition-colors">
+<input class="w-5 h-5 rounded border-border-slate text-primary focus:ring-primary bg-surface-dim" type="checkbox"/>
+<span class="font-body-md">Enable 2nd Factor (MFA) everywhere.</span>
+</label>
+<label class="flex items-center gap-4 p-4 bg-surface-container-low border border-border-slate rounded-lg cursor-pointer hover:bg-surface-container-high transition-colors">
+<input class="w-5 h-5 rounded border-border-slate text-primary focus:ring-primary bg-surface-dim" type="checkbox"/>
+<span class="font-body-md">Use unique passwords for every site.</span>
+</label>
+<label class="flex items-center gap-4 p-4 bg-surface-container-low border border-border-slate rounded-lg cursor-pointer hover:bg-surface-container-high transition-colors">
+<input checked="" class="w-5 h-5 rounded border-border-slate text-primary focus:ring-primary bg-surface-dim" type="checkbox"/>
+<span class="font-body-md">Store credentials in a dedicated Vault.</span>
+</label>
+</div>
+</section>
+<!-- Password Managers Recommendation -->
+<section class="space-y-6">
+<h2 class="font-headline-md text-headline-md">Secure Vaults</h2>
+<div class="grid grid-cols-2 gap-4">
+<a class="p-4 bg-surface-charcoal border border-border-slate rounded-xl hover:border-primary transition-all group" href="#">
+<div class="flex justify-between items-start mb-3">
+<span class="material-symbols-outlined text-primary" data-icon="lock">lock</span>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors text-sm" data-icon="open_in_new">open_in_new</span>
+</div>
+<p class="font-label-caps text-label-caps">BITWARDEN</p>
+<p class="font-metric-sm text-[10px] text-on-surface-variant mt-1">Open Source / Audited</p>
+</a>
+<a class="p-4 bg-surface-charcoal border border-border-slate rounded-xl hover:border-primary transition-all group" href="#">
+<div class="flex justify-between items-start mb-3">
+<span class="material-symbols-outlined text-primary" data-icon="shield">shield</span>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors text-sm" data-icon="open_in_new">open_in_new</span>
+</div>
+<p class="font-label-caps text-label-caps">1PASSWORD</p>
+<p class="font-metric-sm text-[10px] text-on-surface-variant mt-1">Secret Key Security</p>
+</a>
+</div>
+</section>
+<!-- FAQ Accordion -->
+<section class="space-y-6 pb-12">
+<h2 class="font-headline-md text-headline-md">Security FAQ</h2>
+<div class="space-y-2">
+<div class="accordion-item bg-surface-container-low rounded-lg border border-border-slate">
+<button class="w-full p-4 flex justify-between items-center text-left" onclick="toggleAccordion(this)">
+<span class="font-body-md font-semibold">Is it safe to write passwords down?</span>
+<span class="material-symbols-outlined transition-transform duration-300 chevron" data-icon="expand_more">expand_more</span>
+</button>
+<div class="accordion-content px-4 pb-4">
+<p class="text-on-surface-variant text-body-md">Physical notes are safer than digital text files, but a hardware-encrypted password manager is the superior industry standard.</p>
+</div>
+</div>
+<div class="accordion-item bg-surface-container-low rounded-lg border border-border-slate">
+<button class="w-full p-4 flex justify-between items-center text-left" onclick="toggleAccordion(this)">
+<span class="font-body-md font-semibold">How often should I rotate passwords?</span>
+<span class="material-symbols-outlined transition-transform duration-300 chevron" data-icon="expand_more">expand_more</span>
+</button>
+<div class="accordion-content px-4 pb-4">
+<p class="text-on-surface-variant text-body-md">Traditional rotation is outdated. Only change your password if you suspect a compromise or receive a breach alert.</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[480px] flex justify-around items-center px-4 py-3 pb-safe bg-surface-container-low/80 backdrop-blur-xl border-t border-border-slate dark:border-border-slate shadow-[0_-4px_12px_rgba(0,0,0,0.4)] z-50 rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant p-2 hover:bg-surface-variant/50 transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="vpn_key">vpn_key</span>
+<span class="font-label-caps text-[10px] mt-1">GENERATOR</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary bg-primary/10 rounded-xl p-2 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="verified_user" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<span class="font-label-caps text-[10px] mt-1">VAULT_TIPS</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant p-2 hover:bg-surface-variant/50 transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-caps text-[10px] mt-1">SETTINGS</span>
+</a>
+</nav>
+<script>
+        function toggleAccordion(btn) {
+            const item = btn.parentElement;
+            const isActive = item.classList.contains('active');
+            
+            // Close all
+            document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('active'));
+            
+            // Toggle current
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        }
+
+        // Atmospheric ticker effect
+        const ticker = document.getElementById('brute-ticker');
+        setInterval(() => {
+            const val = (4 + Math.random()).toFixed(1);
+            ticker.textContent = `HASHING: ${val}B/sec`;
+        }, 1500);
+    </script>
+</body></html>
