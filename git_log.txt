@@ -1,3 +1,13 @@
 Reinitialized existing Git repository in C:/Users/hp/Desktop/password_generator_v1.py/.git/
 origin	https://github.com/Admiralty01/password-generator.git (fetch)
 origin	https://github.com/Admiralty01/password-generator.git (push)
+warning: in the working copy of 'app.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'password_generator_v1.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'templates/index.html', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'git_log.txt', LF will be replaced by CRLF the next time Git touches it
+[main 8c309bf] Upload all files
+ 4 files changed, 608 insertions(+), 461 deletions(-)
+ create mode 100644 git_log.txt
+branch 'main' set up to track 'origin/main'.
+To https://github.com/Admiralty01/password-generator.git
+   d67dc13..8c309bf  main -> main

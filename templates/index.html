@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>VaultGuard | Premium Generator</title>
+    <title>VaultGuard | Hybrid Passphrase Suite v.2</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
     <script>
@@ -11,10 +11,7 @@
             theme: {
                 extend: {
                     colors: {
-                        sky: {
-                            400: '#38bdf8',
-                            500: '#0ea5e9',
-                        }
+                        sky: { 400: '#38bdf8', 500: '#0ea5e9', }
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
@@ -25,540 +22,247 @@
         }
     </script>
     <style>
-        body {
-            color: #ffffff;
-            font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
-        }
-        
-        /* Animated Background */
-        @keyframes gradient-bg {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        .mesh-bg {
-            background: linear-gradient(-45deg, #000000, #0a0a0a, #262626, #141414);
-            background-size: 400% 400%;
-            animation: gradient-bg 15s ease infinite;
-            position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1;
-        }
-
-        /* Glassmorphism System */
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.04);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
-            border-radius: 1rem;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .glass-panel:hover {
-            border-color: rgba(56, 189, 248, 0.3);
-            box-shadow: 0 12px 40px rgba(56, 189, 248, 0.1);
-        }
-
-        .glass-nav {
-            background: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .glass-button {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.2s ease;
-        }
-        .glass-button:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(56, 189, 248, 0.5);
-            transform: translateY(-1px);
-        }
-        .glass-button:active {
-            transform: translateY(1px);
-        }
-
-        .primary-button {
-            background: linear-gradient(135deg, #0ea5e9, #38bdf8);
-            box-shadow: 0 4px 15px rgba(14, 165, 233, 0.4);
-            border: none;
-            color: white;
-            transition: all 0.2s ease;
-        }
-        .primary-button:hover {
-            box-shadow: 0 6px 20px rgba(56, 189, 248, 0.6);
-            transform: translateY(-2px);
-            filter: brightness(1.1);
-        }
-
-        /* Typography & Effects */
-        .sky-glow {
-            text-shadow: 0 0 24px rgba(56, 189, 248, 0.5);
-        }
-        .text-gradient {
-            background: linear-gradient(to right, #ffffff, #38bdf8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        /* Forms & Inputs */
-        input[type=range] {
-            -webkit-appearance: none;
-            background: rgba(255, 255, 255, 0.1);
-            height: 6px;
-            border-radius: 99px;
-            width: 100%;
-        }
-        input[type=range]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            height: 20px;
-            width: 20px;
-            border-radius: 50%;
-            background: #ffffff;
-            border: 2px solid #38bdf8;
-            cursor: pointer;
-            box-shadow: 0 0 10px rgba(56, 189, 248, 0.6);
-            transition: transform 0.1s;
-        }
-        input[type=range]::-webkit-slider-thumb:hover {
-            transform: scale(1.2);
-        }
-
-        .toggle-checkbox:checked {
-            right: 0;
-            border-color: #38bdf8;
-        }
-        .toggle-checkbox:checked + .toggle-label {
-            background-color: #0ea5e9;
-        }
-
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-        .icon-fill {
-            font-variation-settings: 'FILL' 1;
-        }
-
-        /* Scrollbar */
+        body { color: #ffffff; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        @keyframes gradient-bg { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        .mesh-bg { background: linear-gradient(-45deg, #000000, #0a0a0a, #262626, #141414); background-size: 400% 400%; animation: gradient-bg 15s ease infinite; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; }
+        .glass-panel { background: rgba(255, 255, 255, 0.04); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3); border-radius: 1rem; transition: all 0.3s ease; }
+        .glass-nav { background: rgba(0, 0, 0, 0.4); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+        .glass-button { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.2s ease; }
+        .glass-button:hover { background: rgba(255, 255, 255, 0.1); border-color: rgba(56, 189, 248, 0.5); }
+        .primary-button { background: linear-gradient(135deg, #0ea5e9, #38bdf8); box-shadow: 0 4px 15px rgba(14, 165, 233, 0.4); border: none; color: white; transition: all 0.2s ease; }
+        .primary-button:hover { box-shadow: 0 6px 20px rgba(56, 189, 248, 0.6); transform: translateY(-2px); }
+        .sky-glow { text-shadow: 0 0 24px rgba(56, 189, 248, 0.5); }
+        .text-gradient { background: linear-gradient(to right, #ffffff, #38bdf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        input[type=range] { -webkit-appearance: none; background: rgba(255, 255, 255, 0.1); height: 6px; border-radius: 99px; width: 100%; }
+        input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; height: 20px; width: 20px; border-radius: 50%; background: #ffffff; border: 2px solid #38bdf8; cursor: pointer; transition: transform 0.1s; }
+        .toggle-checkbox:checked { right: 0; border-color: #38bdf8; }
+        .toggle-checkbox:checked + .toggle-label { background-color: #0ea5e9; }
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.2); border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: rgba(56, 189, 248, 0.5); }
     </style>
 </head>
 <body class="min-h-screen flex flex-col antialiased">
-    
-    <!-- Animated Background -->
     <div class="mesh-bg"></div>
 
-    <!-- Glass Navigation -->
     <header class="glass-nav sticky top-0 z-50 px-6 py-4 flex justify-between items-center w-full">
         <div class="flex items-center gap-3">
             <span class="material-symbols-outlined text-sky-400 text-3xl icon-fill">security</span>
             <h1 class="text-2xl font-bold tracking-tight text-white">Vault<span class="text-sky-400">Guard</span></h1>
         </div>
         <div class="hidden md:flex items-center gap-6">
-            <span class="text-white font-medium border-b-2 border-sky-400 pb-1 cursor-pointer">Generator</span>
-            <span class="text-white/60 hover:text-white transition-colors cursor-pointer">Saved Vaults</span>
+            <span id="nav-gen" class="text-white font-medium border-b-2 border-sky-400 pb-1 cursor-pointer" onclick="switchTab('generator')">Generator</span>
+            <span id="nav-bench" class="text-white/60 hover:text-white transition-colors cursor-pointer" onclick="switchTab('benchmark')">Benchmark & Analytics</span>
             <span class="text-white/60 hover:text-white transition-colors cursor-pointer">History</span>
-            <div class="w-px h-6 bg-white/20 mx-2"></div>
-            <button class="material-symbols-outlined text-white/80 hover:text-sky-400 transition-colors">settings</button>
         </div>
     </header>
 
-    <!-- Main Workspace -->
-    <main class="flex-1 w-full max-w-6xl mx-auto p-6 md:p-8 flex flex-col gap-8 pb-24">
-        
-        <!-- Hero Section -->
+    <main id="tab-generator" class="flex-1 w-full max-w-6xl mx-auto p-6 flex flex-col gap-8 pb-24">
         <section class="text-center space-y-4 mb-4">
-            <h2 class="text-4xl md:text-5xl font-bold text-gradient mb-2">Cryptographic Perfection.</h2>
-            <p class="text-white/70 font-medium max-w-2xl mx-auto">
-                Generate military-grade hybrid passphrases or hyper-complex standard tokens instantly. 
-                Secured locally. Uncrackable globally.
-            </p>
+            <h2 class="text-4xl md:text-5xl font-bold text-gradient mb-2">Hybrid Passphrase Suite v.2</h2>
+            <p class="text-white/70 font-medium max-w-2xl mx-auto">Research-grade cryptographic token generation.</p>
         </section>
 
-        <!-- Mode Toggle -->
         <div class="flex justify-center mb-4">
             <div class="flex bg-white/5 backdrop-blur-md p-1 rounded-xl border border-white/10 shadow-inner">
-                <button id="mode-hybrid-btn" class="px-8 py-2.5 rounded-lg font-bold text-sm bg-sky-500 text-white shadow-lg transition-all">Hybrid Passphrase</button>
-                <button id="mode-random-btn" class="px-8 py-2.5 rounded-lg font-semibold text-sm text-white/60 hover:text-white transition-all">Random Token</button>
+                <button id="mode-hybrid-btn" class="px-8 py-2.5 rounded-lg font-bold text-sm bg-sky-500 text-white shadow-lg transition-all" onclick="setMode('hybrid')">Hybrid Passphrase</button>
+                <button id="mode-random-btn" class="px-8 py-2.5 rounded-lg font-semibold text-sm text-white/60 hover:text-white transition-all" onclick="setMode('random')">Random Token</button>
             </div>
         </div>
 
-        <!-- Master Display Panel -->
-        <div class="glass-panel p-8 md:p-12 relative overflow-hidden group text-center flex flex-col items-center justify-center min-h-[200px]">
-            <!-- Decorative Accent -->
-            <div class="absolute top-0 right-0 p-4 opacity-30 flex items-center gap-2">
-                <div class="w-2 h-2 rounded-full bg-sky-400 animate-pulse"></div>
-                <span class="font-mono text-xs tracking-widest text-sky-400">AES-256-GCM READY</span>
-            </div>
-            
-            <p id="passphrase-display" class="font-mono text-3xl md:text-5xl font-bold text-white sky-glow tracking-tight break-all w-full select-all">
-                Generating...
-            </p>
-
-            <div class="flex gap-4 mt-10 w-full sm:w-auto">
-                <button id="regenerate-btn" class="flex-1 sm:flex-none primary-button px-8 py-3 rounded-xl font-bold flex items-center justify-center gap-2 text-sm">
-                    <span class="material-symbols-outlined text-xl">autorenew</span>
-                    Regenerate
+        <div class="glass-panel p-8 relative overflow-hidden group text-center flex flex-col items-center justify-center min-h-[200px]">
+            <p id="passphrase-display" class="font-mono text-3xl md:text-4xl font-bold text-white sky-glow tracking-tight break-all w-full select-all">Generating...</p>
+            <div class="flex gap-4 mt-8 w-full sm:w-auto">
+                <button id="regenerate-btn" class="primary-button px-8 py-3 rounded-xl font-bold flex items-center justify-center gap-2 text-sm" onclick="generatePassphrase()">
+                    <span class="material-symbols-outlined text-xl">autorenew</span> Regenerate
                 </button>
-                <button id="copy-btn" class="glass-button p-3 rounded-xl flex items-center justify-center text-white/90 hover:text-sky-400 tooltip relative">
+                <button id="copy-btn" class="glass-button p-3 rounded-xl flex items-center justify-center text-white/90" onclick="copyToClipboard()">
                     <span class="material-symbols-outlined">content_copy</span>
                 </button>
             </div>
         </div>
 
-        <!-- Educational Tip Banner -->
-        <div id="educational-tip" class="glass-panel py-3 px-5 flex items-center gap-3 border-sky-400/30 bg-sky-400/5">
-            <span class="material-symbols-outlined text-sky-400 icon-fill">lightbulb</span>
-            <span class="text-sm font-medium text-sky-100">Adding another word increases entropy exponentially!</span>
-        </div>
-
-        <!-- Dynamic Controls (Bento Grid) -->
         <div id="controls-hybrid" class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div class="glass-panel p-6 flex flex-col gap-4">
-                <div class="flex justify-between items-center">
-                    <label class="text-xs font-bold text-white/50 tracking-wider uppercase">Word Count</label>
-                    <span id="word-count-display" class="font-mono text-xl font-bold text-sky-400">4</span>
-                </div>
-                <input id="word-count" type="range" min="3" max="12" value="4" class="mt-2" />
+                <div class="flex justify-between items-center"><label class="text-xs font-bold text-white/50 uppercase">Word Count</label><span id="word-count-display" class="font-mono text-xl font-bold text-sky-400">4</span></div>
+                <input id="word-count" type="range" min="3" max="12" value="4" oninput="document.getElementById('word-count-display').innerText=this.value" onchange="generatePassphrase()"/>
             </div>
             <div class="glass-panel p-6 flex flex-col gap-4">
-                <div class="flex justify-between items-center">
-                    <label class="text-xs font-bold text-white/50 tracking-wider uppercase">Symbol Interleaves</label>
-                    <span id="symbol-count-display" class="font-mono text-xl font-bold text-sky-400">2</span>
-                </div>
-                <input id="symbol-count" type="range" min="0" max="6" value="2" class="mt-2" />
+                <div class="flex justify-between items-center"><label class="text-xs font-bold text-white/50 uppercase">Symbol Interleaves</label><span id="symbol-count-display" class="font-mono text-xl font-bold text-sky-400">2</span></div>
+                <input id="symbol-count" type="range" min="0" max="6" value="2" oninput="document.getElementById('symbol-count-display').innerText=this.value" onchange="generatePassphrase()"/>
             </div>
             <div class="glass-panel p-6 flex items-center justify-between">
-                <div class="flex flex-col">
-                    <span class="text-sm font-bold text-white">Title Case</span>
-                    <span class="text-xs text-white/50">Capitalize words</span>
-                </div>
-                <div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
-                    <input type="checkbox" name="toggle" id="cap-toggle" checked class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 border-slate-700 appearance-none cursor-pointer z-10 transition-all"/>
-                    <label for="cap-toggle" class="toggle-label block overflow-hidden h-6 rounded-full bg-slate-700 cursor-pointer transition-colors"></label>
-                </div>
+                <span class="text-sm font-bold text-white">Title Case</span>
+                <input type="checkbox" id="cap-toggle" checked class="w-5 h-5 rounded" onchange="generatePassphrase()"/>
             </div>
         </div>
 
         <div id="controls-random" class="grid grid-cols-1 md:grid-cols-2 gap-6 hidden">
             <div class="glass-panel p-6 flex flex-col gap-4">
-                <div class="flex justify-between items-center">
-                    <label class="text-xs font-bold text-white/50 tracking-wider uppercase">Token Length</label>
-                    <span id="length-display" class="font-mono text-xl font-bold text-sky-400">16</span>
-                </div>
-                <input id="length-slider" type="range" min="8" max="64" value="16" class="mt-2" />
+                <div class="flex justify-between items-center"><label class="text-xs font-bold text-white/50 uppercase">Token Length</label><span id="length-display" class="font-mono text-xl font-bold text-sky-400">16</span></div>
+                <input id="length-slider" type="range" min="8" max="64" value="16" oninput="document.getElementById('length-display').innerText=this.value" onchange="generatePassphrase()"/>
             </div>
             <div class="glass-panel p-6 grid grid-cols-2 gap-4">
-                <label class="flex items-center gap-3 cursor-pointer group">
-                    <input type="checkbox" id="chk-upper" checked class="w-5 h-5 rounded border-white/20 bg-white/5 text-sky-500 focus:ring-sky-500 focus:ring-offset-slate-900 cursor-pointer" />
-                    <span class="text-sm font-medium group-hover:text-sky-300 transition-colors">Uppercase</span>
-                </label>
-                <label class="flex items-center gap-3 cursor-pointer group">
-                    <input type="checkbox" id="chk-lower" checked class="w-5 h-5 rounded border-white/20 bg-white/5 text-sky-500 focus:ring-sky-500 focus:ring-offset-slate-900 cursor-pointer" />
-                    <span class="text-sm font-medium group-hover:text-sky-300 transition-colors">Lowercase</span>
-                </label>
-                <label class="flex items-center gap-3 cursor-pointer group">
-                    <input type="checkbox" id="chk-nums" checked class="w-5 h-5 rounded border-white/20 bg-white/5 text-sky-500 focus:ring-sky-500 focus:ring-offset-slate-900 cursor-pointer" />
-                    <span class="text-sm font-medium group-hover:text-sky-300 transition-colors">Numbers</span>
-                </label>
-                <label class="flex items-center gap-3 cursor-pointer group">
-                    <input type="checkbox" id="chk-syms" checked class="w-5 h-5 rounded border-white/20 bg-white/5 text-sky-500 focus:ring-sky-500 focus:ring-offset-slate-900 cursor-pointer" />
-                    <span class="text-sm font-medium group-hover:text-sky-300 transition-colors">Symbols</span>
-                </label>
+                <label class="flex items-center gap-3"><input type="checkbox" id="chk-upper" checked class="w-5 h-5" onchange="generatePassphrase()"/><span class="text-sm">Uppercase</span></label>
+                <label class="flex items-center gap-3"><input type="checkbox" id="chk-lower" checked class="w-5 h-5" onchange="generatePassphrase()"/><span class="text-sm">Lowercase</span></label>
+                <label class="flex items-center gap-3"><input type="checkbox" id="chk-nums" checked class="w-5 h-5" onchange="generatePassphrase()"/><span class="text-sm">Numbers</span></label>
+                <label class="flex items-center gap-3"><input type="checkbox" id="chk-syms" checked class="w-5 h-5" onchange="generatePassphrase()"/><span class="text-sm">Symbols</span></label>
             </div>
         </div>
 
-        <!-- Security Analytics Dashboard -->
-        <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div class="glass-panel p-6">
+                <h3 class="text-xs font-bold text-white/50 uppercase mb-2">Entropy & Grade</h3>
+                <div class="flex items-baseline gap-2 mb-4">
+                    <span id="entropy-display" class="text-3xl font-mono font-bold text-white">--</span><span class="text-sm text-white/40 font-mono">bits</span>
+                    <span id="grade-display" class="ml-4 px-2 py-1 rounded text-xs font-bold bg-sky-400/20 text-sky-400">STRONG</span>
+                </div>
+                <div class="w-full h-2 bg-white/10 rounded-full flex gap-1" id="strength-meter">
+                    <div class="h-full w-1/4 rounded-full"></div><div class="h-full w-1/4 rounded-full"></div><div class="h-full w-1/4 rounded-full"></div><div class="h-full w-1/4 rounded-full"></div>
+                </div>
+            </div>
+            <div class="glass-panel p-6">
+                <h3 class="text-xs font-bold text-white/50 uppercase mb-2">Mathematical Space</h3>
+                <p id="combinations-display" class="font-mono text-2xl font-bold text-white">--</p>
+                <p id="charset-display" class="text-xs text-white/40 mt-1 font-mono uppercase">Charset: --</p>
+            </div>
+            <div class="glass-panel p-6 border border-rose-500/30">
+                <h3 class="text-xs font-bold text-white/50 uppercase mb-2">Attack Simulation</h3>
+                <div class="space-y-1">
+                    <p class="text-sm"><span class="text-white/60">Consumer CPU:</span> <span id="time-cpu" class="font-mono text-white font-bold">--</span></p>
+                    <p class="text-sm"><span class="text-white/60">Gaming GPU:</span> <span id="time-gpu" class="font-mono text-white font-bold">--</span></p>
+                    <p class="text-sm"><span class="text-white/60">Enterprise Cluster:</span> <span id="time-cluster" class="font-mono text-rose-400 font-bold">--</span></p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Benchmark Tab -->
+    <main id="tab-benchmark" class="flex-1 w-full max-w-6xl mx-auto p-6 flex flex-col gap-8 pb-24 hidden">
+        <div class="glass-panel p-8">
+            <h2 class="text-2xl font-bold mb-4">Empirical Benchmarking</h2>
+            <p class="text-white/70 mb-6">Run simulated generation cycles to validate randomness and performance.</p>
             
-            <!-- Entropy Engine -->
-            <div class="lg:col-span-2 glass-panel p-6 flex flex-col justify-between gap-6 relative overflow-hidden">
-                <div class="absolute -bottom-10 -right-10 opacity-5">
-                    <span class="material-symbols-outlined text-[120px]">analytics</span>
-                </div>
-                <div class="flex justify-between items-start z-10">
-                    <div>
-                        <h3 class="text-xs font-bold text-white/50 uppercase tracking-widest mb-1">Entropy Engine</h3>
-                        <div class="flex items-baseline gap-2">
-                            <span id="entropy-display" class="text-4xl font-mono font-bold text-white">--</span>
-                            <span class="text-sm text-white/40 font-mono">bits</span>
-                        </div>
-                    </div>
-                    <span id="grade-display" class="px-3 py-1 rounded-md text-xs font-bold tracking-wider border backdrop-blur-sm">STRONG</span>
-                </div>
-                
-                <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden flex gap-1 z-10" id="strength-meter">
-                    <div class="h-full w-1/4 rounded-full transition-all"></div>
-                    <div class="h-full w-1/4 rounded-full transition-all"></div>
-                    <div class="h-full w-1/4 rounded-full transition-all"></div>
-                    <div class="h-full w-1/4 rounded-full transition-all"></div>
-                </div>
+            <div class="flex gap-4 mb-8">
+                <input type="number" id="bench-count" value="1000" min="100" max="10000" class="bg-white/10 border border-white/20 rounded p-2 text-white font-mono" placeholder="Samples (e.g. 1000)" />
+                <button class="primary-button px-6 py-2 rounded-xl font-bold" onclick="runBenchmark()">Run Simulation</button>
             </div>
 
-            <!-- Mathematical Space -->
-            <div class="glass-panel p-6 flex flex-col justify-between">
-                <div class="flex items-center gap-2 mb-4">
-                    <span class="material-symbols-outlined text-sky-400 text-sm">calculate</span>
-                    <span class="text-xs font-bold text-white/50 uppercase tracking-widest">Combinations</span>
-                </div>
-                <div>
-                    <p id="combinations-display" class="font-mono text-2xl font-bold text-white">--</p>
-                    <p id="charset-display" class="text-xs text-white/40 mt-1 font-mono uppercase tracking-wider">Charset: --</p>
-                </div>
-            </div>
-
-            <!-- Attacker Sim -->
-            <div class="glass-panel p-6 flex flex-col justify-between bg-gradient-to-br from-white/5 to-sky-900/10">
-                <div class="flex items-center gap-2 mb-4">
-                    <span class="material-symbols-outlined text-rose-400 text-sm">bolt</span>
-                    <span class="text-xs font-bold text-white/50 uppercase tracking-widest">Pro GPU Crack Time</span>
-                </div>
-                <div>
-                    <p id="time-pro" class="font-mono text-2xl font-bold text-rose-300">--</p>
-                    <p id="time-desktop" class="text-xs text-white/40 mt-1 font-mono">Desktop: --</p>
-                </div>
+            <div id="bench-results" class="grid grid-cols-2 md:grid-cols-4 gap-4 hidden">
+                <div class="bg-white/5 p-4 rounded-lg"><p class="text-xs text-white/50 uppercase">Gen Time</p><p id="bench-time" class="text-xl font-mono font-bold text-sky-400">--</p></div>
+                <div class="bg-white/5 p-4 rounded-lg"><p class="text-xs text-white/50 uppercase">Speed</p><p id="bench-speed" class="text-xl font-mono font-bold text-sky-400">--</p></div>
+                <div class="bg-white/5 p-4 rounded-lg"><p class="text-xs text-white/50 uppercase">Avg Entropy</p><p id="bench-entropy" class="text-xl font-mono font-bold text-sky-400">--</p></div>
+                <div class="bg-white/5 p-4 rounded-lg"><p class="text-xs text-white/50 uppercase">Variance</p><p id="bench-var" class="text-xl font-mono font-bold text-sky-400">--</p></div>
+                <div class="bg-white/5 p-4 rounded-lg"><p class="text-xs text-white/50 uppercase">Collisions</p><p id="bench-col" class="text-xl font-mono font-bold text-emerald-400">--</p></div>
+                <div class="bg-white/5 p-4 rounded-lg"><p class="text-xs text-white/50 uppercase">Random Dist?</p><p id="bench-dist" class="text-xl font-mono font-bold text-emerald-400">--</p></div>
+                <div class="bg-white/5 p-4 rounded-lg col-span-2"><p class="text-xs text-white/50 uppercase">Chi-Square P-Value</p><p id="bench-pval" class="text-xl font-mono font-bold text-sky-400">--</p></div>
             </div>
         </div>
-
-        <!-- History Module -->
-        <div class="glass-panel p-6">
-            <div class="flex justify-between items-center mb-6 border-b border-white/10 pb-4">
-                <h3 class="text-lg font-bold text-white flex items-center gap-2">
-                    <span class="material-symbols-outlined text-sky-400">history</span>
-                    Session History
-                </h3>
-                <button id="export-btn" class="glass-button px-4 py-2 rounded-lg text-xs font-bold flex items-center gap-2 hover:text-sky-400">
-                    <span class="material-symbols-outlined text-sm">download</span>
-                    Export Vault (.txt)
-                </button>
-            </div>
-            <div id="history-list" class="max-h-64 overflow-y-auto space-y-3 pr-2">
-                <div class="empty-state text-center py-8 text-white/40 italic text-sm">
-                    No tokens generated in this session.
-                </div>
-            </div>
-        </div>
-
     </main>
 
     <div id="toast-container" class="fixed bottom-6 right-6 z-[100] flex flex-col gap-2"></div>
 
     <script>
-    document.addEventListener("DOMContentLoaded", () => {
-        // UI Elements
-        const wordCount = document.getElementById("word-count");
-        const wordCountDisplay = document.getElementById("word-count-display");
-        const symbolCount = document.getElementById("symbol-count");
-        const symbolCountDisplay = document.getElementById("symbol-count-display");
-        const capToggle = document.getElementById("cap-toggle");
-        const lengthSlider = document.getElementById("length-slider");
-        const lengthDisplay = document.getElementById("length-display");
-        const chkUpper = document.getElementById("chk-upper");
-        const chkLower = document.getElementById("chk-lower");
-        const chkNums = document.getElementById("chk-nums");
-        const chkSyms = document.getElementById("chk-syms");
-
-        const regenerateBtn = document.getElementById("regenerate-btn");
-        const copyBtn = document.getElementById("copy-btn");
-        const exportBtn = document.getElementById("export-btn");
-
-        const passphraseDisplay = document.getElementById("passphrase-display");
-        const entropyDisplay = document.getElementById("entropy-display");
-        const gradeDisplay = document.getElementById("grade-display");
-        const timeDesktop = document.getElementById("time-desktop");
-        const timePro = document.getElementById("time-pro");
-        const combinationsDisplay = document.getElementById("combinations-display");
-        const charsetDisplay = document.getElementById("charset-display");
-        const educationalTip = document.getElementById("educational-tip").querySelector("span:nth-child(2)");
-        const historyList = document.getElementById("history-list");
-        
-        const modeHybridBtn = document.getElementById("mode-hybrid-btn");
-        const modeRandomBtn = document.getElementById("mode-random-btn");
-        const controlsHybrid = document.getElementById("controls-hybrid");
-        const controlsRandom = document.getElementById("controls-random");
-
         let currentMode = "hybrid";
-        let passwordHistory = [];
 
-        // Sync inputs
-        wordCount.addEventListener("input", (e) => wordCountDisplay.innerText = e.target.value);
-        symbolCount.addEventListener("input", (e) => symbolCountDisplay.innerText = e.target.value);
-        lengthSlider.addEventListener("input", (e) => lengthDisplay.innerText = e.target.value);
+        function switchTab(tab) {
+            document.getElementById('tab-generator').classList.toggle('hidden', tab !== 'generator');
+            document.getElementById('tab-benchmark').classList.toggle('hidden', tab !== 'benchmark');
+            document.getElementById('nav-gen').className = tab === 'generator' ? "text-white font-medium border-b-2 border-sky-400 pb-1 cursor-pointer" : "text-white/60 hover:text-white transition-colors cursor-pointer";
+            document.getElementById('nav-bench').className = tab === 'benchmark' ? "text-white font-medium border-b-2 border-sky-400 pb-1 cursor-pointer" : "text-white/60 hover:text-white transition-colors cursor-pointer";
+        }
 
-        // Mode Switching
         function setMode(mode) {
             currentMode = mode;
-            if (mode === "hybrid") {
-                modeHybridBtn.className = "px-8 py-2.5 rounded-lg font-bold text-sm bg-sky-500 text-white shadow-lg transition-all";
-                modeRandomBtn.className = "px-8 py-2.5 rounded-lg font-semibold text-sm text-white/60 hover:text-white transition-all";
-                controlsHybrid.classList.remove("hidden");
-                controlsRandom.classList.add("hidden");
-            } else {
-                modeRandomBtn.className = "px-8 py-2.5 rounded-lg font-bold text-sm bg-sky-500 text-white shadow-lg transition-all";
-                modeHybridBtn.className = "px-8 py-2.5 rounded-lg font-semibold text-sm text-white/60 hover:text-white transition-all";
-                controlsRandom.classList.remove("hidden");
-                controlsHybrid.classList.add("hidden");
-            }
+            document.getElementById("controls-hybrid").classList.toggle("hidden", mode !== "hybrid");
+            document.getElementById("controls-random").classList.toggle("hidden", mode !== "random");
+            document.getElementById("mode-hybrid-btn").className = mode === 'hybrid' ? "px-8 py-2.5 rounded-lg font-bold text-sm bg-sky-500 text-white shadow-lg" : "px-8 py-2.5 rounded-lg font-semibold text-sm text-white/60 hover:text-white";
+            document.getElementById("mode-random-btn").className = mode === 'random' ? "px-8 py-2.5 rounded-lg font-bold text-sm bg-sky-500 text-white shadow-lg" : "px-8 py-2.5 rounded-lg font-semibold text-sm text-white/60 hover:text-white";
             generatePassphrase();
         }
-        modeHybridBtn.addEventListener("click", () => setMode("hybrid"));
-        modeRandomBtn.addEventListener("click", () => setMode("random"));
 
-        // Toast
         function showToast(msg) {
-            const toast = document.createElement("div");
-            toast.className = "glass-panel px-4 py-3 text-sm font-medium flex items-center gap-2 transform translate-y-4 opacity-0 transition-all border-sky-400/30";
-            toast.innerHTML = `<span class="material-symbols-outlined text-sky-400 text-sm">info</span>${msg}`;
-            document.getElementById("toast-container").appendChild(toast);
-            requestAnimationFrame(() => {
-                toast.style.opacity = "1";
-                toast.style.transform = "translateY(0)";
-            });
-            setTimeout(() => {
-                toast.style.opacity = "0";
-                toast.style.transform = "translateY(4px)";
-                setTimeout(() => toast.remove(), 300);
-            }, 3000);
+            const t = document.createElement("div"); t.className = "glass-panel px-4 py-3 text-sm flex gap-2"; t.innerHTML = `<span>✅</span>${msg}`;
+            document.getElementById("toast-container").appendChild(t);
+            setTimeout(() => t.remove(), 3000);
         }
 
-        // Add History
-        function addHistoryItem(passphrase, grade, entropy) {
-            const emptyState = historyList.querySelector(".empty-state");
-            if (emptyState) emptyState.remove();
-            
-            passwordHistory.unshift({passphrase, grade, entropy});
-            
-            const div = document.createElement("div");
-            div.className = "flex justify-between items-center p-3 rounded-lg bg-white/5 border border-white/5 hover:border-white/10 transition-colors";
-            
-            let gradeColor = grade === "WEAK" ? "text-rose-400 border-rose-400/30 bg-rose-400/10" :
-                             grade === "SECURE" ? "text-sky-400 border-sky-400/30 bg-sky-400/10" :
-                             "text-emerald-400 border-emerald-400/30 bg-emerald-400/10";
-
-            div.innerHTML = `
-                <span class="font-mono text-sm text-white truncate max-w-[60%]">${passphrase}</span>
-                <div class="flex gap-3 items-center">
-                    <span class="text-[10px] font-bold px-2 py-0.5 rounded border ${gradeColor}">${grade}</span>
-                    <span class="text-xs font-mono text-white/50">${entropy} bits</span>
-                </div>
-            `;
-            historyList.prepend(div);
+        function copyToClipboard() {
+            navigator.clipboard.writeText(document.getElementById("passphrase-display").innerText);
+            showToast("Copied to clipboard!");
         }
 
-        // Export
-        exportBtn.addEventListener("click", () => {
-            if(passwordHistory.length === 0) return showToast("No history to export.");
-            let txt = "VaultGuard Session History\n==========================\n\n";
-            passwordHistory.forEach((item, i) => {
-                txt += `[${i+1}] ${item.passphrase}\n    Grade: ${item.grade} | Entropy: ${item.entropy} bits\n\n`;
-            });
-            const blob = new Blob([txt], {type: "text/plain"});
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement("a");
-            a.href = url;
-            a.download = "vaultguard_history.txt";
-            a.click();
-            URL.revokeObjectURL(url);
-            showToast("History exported successfully!");
-        });
-
-        // Copy
-        copyBtn.addEventListener("click", () => {
-            const text = passphraseDisplay.innerText;
-            if(text && !text.includes("Generating")) {
-                navigator.clipboard.writeText(text).then(() => {
-                    const icon = copyBtn.querySelector('span');
-                    icon.innerText = "check";
-                    icon.classList.add("text-emerald-400");
-                    setTimeout(() => {
-                        icon.innerText = "content_copy";
-                        icon.classList.remove("text-emerald-400");
-                    }, 2000);
-                    showToast("Copied to clipboard!");
-                });
-            }
-        });
-
-        // Generate
         async function generatePassphrase() {
             let payload = { mode: currentMode };
             if (currentMode === "hybrid") {
-                payload.words = parseInt(wordCount.value);
-                payload.symbols = parseInt(symbolCount.value);
-                payload.capitalize = capToggle.checked;
+                payload.words = parseInt(document.getElementById("word-count").value);
+                payload.symbols = parseInt(document.getElementById("symbol-count").value);
+                payload.capitalize = document.getElementById("cap-toggle").checked;
             } else {
-                payload.length = parseInt(lengthSlider.value);
-                payload.use_upper = chkUpper.checked;
-                payload.use_lower = chkLower.checked;
-                payload.use_nums = chkNums.checked;
-                payload.use_syms = chkSyms.checked;
+                payload.length = parseInt(document.getElementById("length-slider").value);
+                payload.use_upper = document.getElementById("chk-upper").checked;
+                payload.use_lower = document.getElementById("chk-lower").checked;
+                payload.use_nums = document.getElementById("chk-nums").checked;
+                payload.use_syms = document.getElementById("chk-syms").checked;
             }
-            
-            passphraseDisplay.style.opacity = '0.5';
             
             try {
-                const response = await fetch('/api/generate', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-                const data = await response.json();
+                const res = await fetch('/api/generate', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+                const data = await res.json();
                 
-                passphraseDisplay.innerText = data.passphrase;
-                entropyDisplay.innerText = data.entropy;
-                gradeDisplay.innerText = data.grade;
-                timeDesktop.innerText = data.crack_times.desktop;
-                timePro.innerText = data.crack_times.pro;
-                combinationsDisplay.innerText = data.combinations;
-                charsetDisplay.innerText = `Charset: ${data.charset_size}`;
+                document.getElementById("passphrase-display").innerText = data.passphrase;
+                document.getElementById("entropy-display").innerText = data.entropy;
+                document.getElementById("grade-display").innerText = data.grade;
+                document.getElementById("combinations-display").innerText = data.combinations;
+                document.getElementById("charset-display").innerText = `Charset: ${data.charset_size}`;
                 
-                // Meter Logic
-                const meterBlocks = document.getElementById("strength-meter").children;
-                let activeBlocks = data.grade === "WEAK" ? 1 : data.grade === "SECURE" ? 2 : data.grade === "STRONG" ? 3 : 4;
-                let colorClass = data.grade === "WEAK" ? "bg-rose-400" : data.grade === "SECURE" ? "bg-sky-400" : "bg-emerald-400";
-                
-                for(let i=0; i<4; i++) {
-                    meterBlocks[i].className = `h-full w-1/4 rounded-full transition-all duration-500 ${i < activeBlocks ? colorClass : 'bg-white/10'}`;
-                }
+                document.getElementById("time-cpu").innerText = data.crack_times.consumer_cpu;
+                document.getElementById("time-gpu").innerText = data.crack_times.gaming_gpu;
+                document.getElementById("time-cluster").innerText = data.crack_times.distributed_cluster;
 
-                // Grade Badge
-                gradeDisplay.className = `px-3 py-1 rounded-md text-xs font-bold tracking-wider border backdrop-blur-sm ${
-                    data.grade === "WEAK" ? "text-rose-400 border-rose-400/30 bg-rose-400/10" :
-                    data.grade === "SECURE" ? "text-sky-400 border-sky-400/30 bg-sky-400/10" :
-                    "text-emerald-400 border-emerald-400/30 bg-emerald-400/10"
-                }`;
+                const blocks = document.getElementById("strength-meter").children;
+                let active = data.grade === "WEAK" ? 1 : data.grade === "SECURE" ? 2 : data.grade === "STRONG" ? 3 : 4;
+                let color = data.grade === "WEAK" ? "bg-rose-400" : data.grade === "SECURE" ? "bg-sky-400" : "bg-emerald-400";
+                for(let i=0; i<4; i++) blocks[i].className = `h-full w-1/4 rounded-full transition-all duration-500 ${i < active ? color : 'bg-white/10'}`;
 
-                // Tips
-                if (currentMode === "hybrid") {
-                    educationalTip.innerText = payload.words < 5 ? "Adding another word increases entropy exponentially!" : "Excellent word count. This hybrid phrase is highly secure.";
-                } else {
-                    educationalTip.innerText = payload.length < 16 ? "For random tokens, length is critical. Try 16+ chars." : "Strong random configuration. Store it securely!";
-                }
-                
-                addHistoryItem(data.passphrase, data.grade, data.entropy);
-                
-            } catch (error) {
-                console.error(error);
-                passphraseDisplay.innerText = "Error generating token.";
-            } finally {
-                passphraseDisplay.style.opacity = '1';
-            }
+            } catch (err) { console.error(err); }
         }
 
-        // Listeners
-        [wordCount, symbolCount, capToggle, lengthSlider, chkUpper, chkLower, chkNums, chkSyms].forEach(el => {
-            el.addEventListener("change", generatePassphrase);
-        });
-        regenerateBtn.addEventListener("click", generatePassphrase);
+        async function runBenchmark() {
+            document.getElementById("bench-results").classList.remove("hidden");
+            const count = parseInt(document.getElementById("bench-count").value);
+            
+            let payload = { mode: currentMode, count: count };
+            if (currentMode === "hybrid") {
+                payload.words = parseInt(document.getElementById("word-count").value);
+                payload.symbols = parseInt(document.getElementById("symbol-count").value);
+            } else {
+                payload.length = parseInt(document.getElementById("length-slider").value);
+            }
 
-        // Init
-        generatePassphrase();
-    });
+            try {
+                const res = await fetch('/api/benchmark', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+                const data = await res.json();
+                
+                document.getElementById("bench-time").innerText = `${data.generation_time_sec}s`;
+                document.getElementById("bench-speed").innerText = `${data.speed_per_sec}/s`;
+                document.getElementById("bench-entropy").innerText = `${data.avg_entropy}b`;
+                document.getElementById("bench-var").innerText = data.entropy_variance;
+                document.getElementById("bench-col").innerText = data.collision_count;
+                document.getElementById("bench-dist").innerText = data.is_random_dist ? "YES" : "NO";
+                document.getElementById("bench-pval").innerText = data.p_value;
+                
+                if (data.collision_count > 0) {
+                    document.getElementById("bench-col").className = "text-xl font-mono font-bold text-rose-400";
+                } else {
+                    document.getElementById("bench-col").className = "text-xl font-mono font-bold text-emerald-400";
+                }
+                
+                showToast("Benchmark Complete!");
+            } catch (err) { console.error(err); }
+        }
+
+        document.addEventListener("DOMContentLoaded", generatePassphrase);
     </script>
 </body>
 </html>
