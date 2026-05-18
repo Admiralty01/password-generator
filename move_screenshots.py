@@ -53,5 +53,36 @@ def main():
     print(f"📊 Total migrated figures: {moved_count}/7")
     print(f"📂 Saved location: {target_dir}")
 
+    # 4. Clean up unused/deprecated files
+    print("\n🧹 Starting cleanup of unused/deprecated files...")
+    files_to_delete = [
+        r"c:\Users\hp\Desktop\password_generator_v1.py\eff_large_wordlist_raw.txt",
+        r"c:\Users\hp\Desktop\password_generator_v1.py\password_generator_v1.py"
+    ]
+    dirs_to_delete = [
+        r"c:\Users\hp\Desktop\password_generator_v1.py\stitch_hybrid_passphrase_security_suite"
+    ]
+
+    cleanup_count = 0
+    for f in files_to_delete:
+        if os.path.exists(f):
+            try:
+                os.remove(f)
+                print(f"🗑️  Deleted unused file: {os.path.basename(f)}")
+                cleanup_count += 1
+            except Exception as e:
+                print(f"❌ Failed to delete file {os.path.basename(f)}: {e}")
+
+    for d in dirs_to_delete:
+        if os.path.exists(d):
+            try:
+                shutil.rmtree(d)
+                print(f"🗑️  Deleted unused directory: {os.path.basename(d)}")
+                cleanup_count += 1
+            except Exception as e:
+                print(f"❌ Failed to delete directory {os.path.basename(d)}: {e}")
+
+    print(f"\n🧹 Cleanup complete! Total deleted items: {cleanup_count}")
+
 if __name__ == "__main__":
     main()

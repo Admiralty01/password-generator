@@ -760,10 +760,12 @@
                 distNode.className = data.is_random_dist ? "font-mono text-base font-bold text-brand-primary" : "font-mono text-base font-bold text-brand-danger";
 
                 // Populate attack profiles table with dynamic calculations
-                document.getElementById("bench-table-cpu").innerText = data.crack_times.consumer_cpu;
-                document.getElementById("bench-table-gpu").innerText = data.crack_times.gaming_gpu;
-                document.getElementById("bench-table-cluster").innerText = data.crack_times.distributed_cluster;
-                document.getElementById("bench-table-distributed").innerText = data.crack_times.distributed_network;
+                if (data.crack_times) {
+                    document.getElementById("bench-table-cpu").innerText = data.crack_times.consumer_cpu || "--";
+                    document.getElementById("bench-table-gpu").innerText = data.crack_times.gaming_gpu || "--";
+                    document.getElementById("bench-table-cluster").innerText = data.crack_times.distributed_cluster || "--";
+                    document.getElementById("bench-table-distributed").innerText = data.crack_times.distributed_network || "--";
+                }
 
             } catch (err) {
                 console.error("Benchmark endpoint communication error:", err);
