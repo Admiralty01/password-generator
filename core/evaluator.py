@@ -2,10 +2,10 @@ import math
 
 # Attack models defined in hashes per second
 ATTACK_MODELS = {
-    "consumer_cpu": 1e7,       # 10 Million/sec
-    "gaming_gpu": 1e9,         # 1 Billion/sec
-    "enterprise_gpu": 1e11,    # 100 Billion/sec
-    "distributed_cluster": 1e14 # 100 Trillion/sec
+    "consumer_cpu": 1e7,         # 10 Million/sec
+    "gaming_gpu": 1e9,           # 1 Billion/sec
+    "distributed_cluster": 1e11, # 100 Billion/sec (Enterprise Cluster)
+    "distributed_network": 1e13  # 10 Trillion/sec (Distributed Network)
 }
 
 def format_time(seconds):

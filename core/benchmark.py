@@ -2,6 +2,7 @@ import time
 import numpy as np
 from scipy.stats import chisquare
 from .generator import generate_hybrid, generate_random
+from .evaluator import estimate_crack_times
 
 def run_benchmark(wordlist, mode="hybrid", count=1000, **kwargs):
     """
@@ -65,5 +66,6 @@ def run_benchmark(wordlist, mode="hybrid", count=1000, **kwargs):
         "collision_count": int(collision_count),
         "chi_square_stat": float(round(chi2_stat, 2)),
         "p_value": float(round(p_value, 4)),
-        "is_random_dist": bool(p_value > 0.05)
+        "is_random_dist": bool(p_value > 0.05),
+        "crack_times": estimate_crack_times(avg_entropy)
     }
